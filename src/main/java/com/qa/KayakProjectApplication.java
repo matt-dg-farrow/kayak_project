@@ -8,6 +8,7 @@ public class KayakProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KayakProjectApplication.class, args);
+		
 	}
 
 }
