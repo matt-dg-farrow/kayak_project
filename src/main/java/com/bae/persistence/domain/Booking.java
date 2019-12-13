@@ -32,6 +32,11 @@ public class Booking {
 	@JoinColumn(name = "equipId")
 	private Equipment equipment;
 
+	@Override
+	public String toString() {
+		return "Booking [customer=" + customer + ", equipment=" + equipment + "]";
+	}
+
 	public Long getId() {
 		return id;
 	}
