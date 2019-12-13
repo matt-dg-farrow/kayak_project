@@ -1,6 +1,5 @@
 package com.bae.persistence.domain;
 
-import java.text.DecimalFormat;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -35,7 +34,7 @@ public class Customer {
 	}
 
 	public Customer(String custFirstName, String custSurname, String emergFirstName, String emergSurname,
-			String contactNumber, String emergRelation, Booking... bookings) {
+			String contactNumber, String emergRelation) {
 		super();
 		this.custFirstName = custFirstName;
 		this.custSurname = custSurname;
@@ -43,8 +42,6 @@ public class Customer {
 		this.emergSurname = emergSurname;
 		this.emergContactNumber = contactNumber;
 		this.emergRelation = emergRelation;
-		this.bookings = Stream.of(bookings).collect(Collectors.toSet());
-		this.bookings.forEach(x -> x.setCustomer(this));
 	}
 
 	@Override
