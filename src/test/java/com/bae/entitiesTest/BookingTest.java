@@ -2,8 +2,6 @@ package com.bae.entitiesTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.text.DecimalFormat;
-
 import org.junit.jupiter.api.Test;
 
 import com.bae.persistence.domain.Booking;

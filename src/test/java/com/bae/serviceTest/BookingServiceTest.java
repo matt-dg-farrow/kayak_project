@@ -20,9 +20,7 @@ import com.bae.persistence.domain.Booking;
 import com.bae.persistence.domain.Customer;
 import com.bae.persistence.domain.Equipment;
 import com.bae.persistence.repo.BookingRepo;
-import com.bae.persistence.repo.EquipmentRepo;
 import com.bae.service.BookingService;
-import com.bae.service.EquipmentService;
 
 @RunWith(SpringRunner.class)
 public class BookingServiceTest {

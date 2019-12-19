@@ -15,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.bae.persistence.domain.Customer;
 import com.bae.persistence.domain.Equipment;
 import com.bae.persistence.repo.EquipmentRepo;
 import com.bae.service.EquipmentService;

@@ -33,7 +33,7 @@ public class EquipmentController {
 	}
 
 	@GetMapping("/getEquipment")
-	public List<Equipment> getEquipment(@PathVariable Long id) {
+	public List<Equipment> getEquipment() {
 		return this.service.readEquipments();
 	}
 

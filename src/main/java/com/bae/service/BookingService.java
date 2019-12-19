@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bae.persistence.domain.Booking;
-import com.bae.persistence.domain.Equipment;
 import com.bae.persistence.repo.BookingRepo;
 
 @Service
@@ -24,8 +23,7 @@ public class BookingService {
 	}
 
 	public List<Booking> readBookings() {
-		List<Booking> bookings = this.bookingRepo.findAll();
-		return bookings;
+		return this.bookingRepo.findAll();
 	}
 
 	public Booking updateBooking(Booking booking, Long id) {
