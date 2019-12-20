@@ -42,8 +42,7 @@ public class CustControllerTest {
 	@Test
 	public void createCustTest() {
 		Mockito.when(service.createCust(cust1)).thenReturn(cust1);
-		assertEquals(cust1, this.service.createCust(cust1));
-
+		assertEquals(cust1, this.controller.createCustomer(cust1));
 		verify(this.service, times(1)).createCust(this.cust1);
 	}
 
@@ -54,27 +53,24 @@ public class CustControllerTest {
 		verify(this.service, times(1)).updateCustomer(cust2, 1L);
 
 	}
-	
+
 	@Test
 	public void getCustomersTest() {
 		Mockito.when(service.readCustomers()).thenReturn(this.customers);
-		
-		assertEquals(this.customers, service.readCustomers());
+		assertEquals(this.customers, controller.getCustomer());
 		verify(this.service, times(1)).readCustomers();
 
 	}
-	
+
 	@Test
 	public void deleteCustomer() {
 		this.controller.deleteCustomer(1L);
-		
 		verify(this.service, times(1)).deleteCustomer(1L);
 	}
-	
+
 	@Test
 	public void deleteAllTest() {
 		this.controller.deleteAll();
-		
 		verify(this.service, times(1)).deleteAll();
 	}
 

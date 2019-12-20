@@ -71,6 +71,13 @@ public class EquipmentServiceTest {
 		
 	}
 	
+	@Test
+	public void deleteAllTest() {
+		this.service.deleteAll();
+		
+		verify(this.repo, times(1)).deleteAll();
+	}
+	
 	
 
 

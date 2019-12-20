@@ -46,5 +46,10 @@ public class EquipmentController {
 	public void deleteEquipment(@PathVariable Long id) {
 		this.service.deleteEquipment(id);
 	}
+	
+	@DeleteMapping("/deleteAllEquipment")
+	public void deleteAll() {
+		this.service.deleteAll();
+	}
 
 }

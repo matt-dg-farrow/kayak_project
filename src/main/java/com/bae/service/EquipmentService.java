@@ -36,5 +36,9 @@ public class EquipmentService {
 	public void deleteEquipment(Long id) {
 		this.equipRepo.deleteById(id);
 	}
+	
+	public void deleteAll() {
+		this.equipRepo.deleteAll();
+	}
 
 }
