@@ -23,7 +23,7 @@ public class CustomerService {
 		this.custRepo = custRepo;
 		this.equipRepo = repo;
 	}
-	
+
 	public void customerSetEquip(Customer customer) {
 		if (customer.getEquipment() != null) {
 			customer.setEquipment(customer.getEquipment().stream()
@@ -34,15 +34,21 @@ public class CustomerService {
 		}
 	}
 
-	public Customer createCust(Customer customer) {
-		customerSetEquip(customer);
-		return this.custRepo.save(customer);
-
+	public Customer createCust(Customer customer) throws CapacityReachedException {
+		if (capacity() < 300) {
+			customerSetEquip(customer);
+			return this.custRepo.save(customer);
+		} else {
+			throw new CapacityReachedException();
+		}
 	}
 
+//	public int custEquipCost(Customer customer) {
+//		customer.getEquipment()
+//	}
 
 	public List<Customer> readCustomers() {
-		return this.custRepo.findAll(); 
+		return this.custRepo.findAll();
 	}
 
 	public Customer updateCustomer(Customer cust, Long id) {
@@ -57,7 +63,6 @@ public class CustomerService {
 
 		custToBeUpdated.setEquipment(cust.getEquipment());
 
-
 		return this.custRepo.save(custToBeUpdated);
 	}
 
@@ -67,5 +72,9 @@ public class CustomerService {
 
 	public void deleteAll() {
 		this.custRepo.deleteAll();
+	}
+
+	public Long capacity() {
+		return this.custRepo.count();
 	}
 }

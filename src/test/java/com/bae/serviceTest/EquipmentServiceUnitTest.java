@@ -20,7 +20,7 @@ import com.bae.persistence.repo.EquipmentRepo;
 import com.bae.service.EquipmentService;
 
 @RunWith(SpringRunner.class)
-public class EquipmentServiceTest {
+public class EquipmentServiceUnitTest {
 	
 	@InjectMocks
 	private EquipmentService service;

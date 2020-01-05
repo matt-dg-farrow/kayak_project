@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.persistence.domain.Customer;
+import com.bae.service.CapacityReachedException;
 import com.bae.service.CustomerService;
 
 @RestController
@@ -30,7 +31,7 @@ public class CustomerController {
 	}
 
 	@PostMapping("/createCustomer")
-	public Customer createCustomer(@RequestBody Customer cust) {
+	public Customer createCustomer(@RequestBody Customer cust) throws CapacityReachedException {
 		return this.service.createCust(cust);
 	}
 

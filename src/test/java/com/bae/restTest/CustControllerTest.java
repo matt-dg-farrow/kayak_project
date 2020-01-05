@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.bae.persistence.domain.Customer;
 import com.bae.rest.CustomerController;
+import com.bae.service.CapacityReachedException;
 import com.bae.service.CustomerService;
 
 @RunWith(SpringRunner.class)
@@ -40,11 +41,17 @@ public class CustControllerTest {
 	}
 
 	@Test
-	public void createCustTest() {
+	public void createCustTest() throws CapacityReachedException {
 		Mockito.when(service.createCust(cust1)).thenReturn(cust1);
 		assertEquals(cust1, this.controller.createCustomer(cust1));
 		verify(this.service, times(1)).createCust(this.cust1);
 	}
+
+//	@Test(expected = CapacityReachedException.class)
+//	public void createTestAtMaxCap() throws CapacityReachedException {
+//		Mockito.when(this.service.capacity()).thenReturn(301L);
+//		System.out.println(this.controller.createCustomer(cust1));
+//	}
 
 	@Test
 	public void updateCustTest() {
