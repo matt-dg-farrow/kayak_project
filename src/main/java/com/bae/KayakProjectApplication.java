@@ -10,6 +10,7 @@ public class KayakProjectApplication extends SpringBootServletInitializer{
 	public static void main(String[] args) {
 		SpringApplication.run(KayakProjectApplication.class, args);
 		
+		
 	}
 
 }

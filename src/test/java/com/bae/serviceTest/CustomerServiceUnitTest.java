@@ -46,6 +46,7 @@ public class CustomerServiceUnitTest {
 		this.customers = new ArrayList<>();
 		this.cust1 = new Customer("Bill", "Billy", "Bob", "Bobby", "07779111222", "Brother");
 		this.cust2 = new Customer("Sue", "Bills", "Steve", "Billington", "07742333444", "Father");
+		this.cust2.setId(2L);
 		this.equip1.setId(1L);
 		this.equipList.add(equip1);
 		this.cust2.setEquipment(equipList);
@@ -109,6 +110,19 @@ public class CustomerServiceUnitTest {
 	public void capacityTest() {
 		Mockito.when(custRepo.count()).thenReturn(Long.valueOf(customers.size()));
 		assertEquals(1, this.service.capacity());
+	}
+	
+	@Test
+	public void custNoEquipCostTest() {
+		Mockito.when(custRepo.findById(1L)).thenReturn(Optional.of(cust1));
+		assertEquals(0, this.service.custEquipCost(1L));
+	}
+	
+	@Test
+	public void custEquipCostTest() {
+		customers.add(cust2);
+		Mockito.when(custRepo.findById(2L)).thenReturn(Optional.of(cust2));
+		assertEquals(60, this.service.custEquipCost(2L));
 	}
 
 }

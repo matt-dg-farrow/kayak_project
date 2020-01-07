@@ -43,9 +43,17 @@ public class CustomerService {
 		}
 	}
 
-//	public int custEquipCost(Customer customer) {
-//		customer.getEquipment()
-//	}
+	public int custEquipCost(Long id) {
+		Customer cust = this.custRepo.findById(id).orElseThrow(EntityNotFoundException::new);
+		if (cust.getEquipment() != null) {
+			return cust.getEquipment().stream().map(equip -> equip.getPrice()).reduce((acc, next) -> (acc + next))
+					.orElse(0);
+		}
+		else {
+			return 0;
+		}
+
+	}
 
 	public List<Customer> readCustomers() {
 		return this.custRepo.findAll();
