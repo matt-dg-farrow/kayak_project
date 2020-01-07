@@ -1,0 +1,99 @@
+.navbar-brand {
+    font-size: 29px;
+    margin-left: 1rem;
+}
+
+.nav-item.nav-link{
+    font-size: 19px;
+    padding-top: 18px;
+}
+
+.upper-half-column {
+    float: left;
+    padding-left: 2rem;
+    padding-top: 2rem;
+}
+
+.left.mid {
+    width: 40%;
+}
+
+.right {
+    width: 20%;
+}
+
+#input-fields-RHS {
+    padding-left: 4rem;
+}
+
+
+
+#add-button{
+    margin-left: 3rem;
+    margin-top: 5rem;
+}
+
+#input-fields:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+
+#table-of-customers{
+    margin-left: 2rem;
+    padding-right: 16rem;
+    width: 70%;
+}
+
+#table-header{
+    font-weight: bold;
+}
+
+.lower-half-column {
+    float: left;
+    padding-top: 2rem;
+}
+
+.LHS {
+    width:80%;
+}
+
+.RHS {
+    width:20%;
+    text-align: centre;
+
+}
+
+/* #lower-half-RHS {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    
+} */
+
+.dot {
+    height: 125px;
+    width: 125px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+
+  }
+
+
+
+#no-of-customers {
+}
+

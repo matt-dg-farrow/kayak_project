@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/styleHome.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">White Water Centre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="rent.html">Rent</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="input-fields">
+
+        <div id="input-fields-LHS" class="upper-half-column left">
+            <div>
+                <h1 class=detail-header>Customer Details:</h1>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" placeholder="First Name">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" placeholder="Last Name">
+            </div>
+        </div>
+
+        <div id="input-fields-RHS" class="upper-half-column mid">
+            <div>
+                <h1 class=detail-header>Emergency Contact Details:</h1>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" placeholder="First Name">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" placeholder="Last Name">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" placeholder="Mobile Number">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" placeholder="Relation to Customer">
+            </div>
+
+        </div>
+
+        <div id="add-button" class="upper-half-column right">
+            <button type="submit" class="btn btn-success">Add Customer</button>
+        </div>
+    </div>
+    <hr />
+    <div class="lower-half">
+        <div id="table-of-customers" class="lower-half-column LHS">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr id="table-header">
+                        <td colspan="3">Customer Details</td>
+                        <td colspan="4">Emergency Details</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Mobile Number</th>
+                        <th scope="col">Relation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- contents of the table, eg -->
+                    <th scope="row">1</th>
+                    <!-- above line not needed? -->
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>Bill</td>
+                    <td>Billington</td>
+                    <td>07872123456</td>
+                    <td>Friend</td>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div class="lower-half-column RHS">
+            <div id="safety-indicator">
+                <span class="dot"></span>
+            </div>
+            <div id="no-of-customers">
+                <h3>Current number of people on course:</h3>
+                <h3>0/300</h3>
+            </div>
+            <div>
+                <input id="search-box" placeholder="Search...">
+            </div>
+            <div id="remove-buttons">
+                <button id="remove-select" type="submit" class="btn btn-outline-primary">Remove Selected</button>
+                <button id="remove-all" type="submit" class="btn btn-primary">Remove All</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

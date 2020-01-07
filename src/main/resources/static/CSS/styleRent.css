@@ -1,0 +1,81 @@
+.navbar-brand {
+    font-size: 29px;
+    margin-left: 1rem;
+}
+
+.nav-item.nav-link{
+    font-size: 19px;
+    padding-top: 18px;
+}
+
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+
+#table-of-customers{
+    margin-left: 2rem;
+    padding-right: 16rem;
+    width: 70rem;
+    height: 22.5rem;
+}
+
+#table-header{
+    font-weight: bold;
+}
+
+#upper-half{
+    margin-top: 2rem;
+
+    display:flex;
+}
+
+#upper-half-RHS {
+   margin-right: 10rem;
+   margin-top: 5rem;
+}
+
+.lower-half-column {
+        float: left;
+        width: 33.33%;
+        padding-left: 2rem;
+        padding-top: 2rem;
+}
+
+
+
+
+/* #lower-half{
+    margin-top: 2rem;
+    margin-left: 2rem;
+    display:flex;
+} */
+
+#rent-checkboxes{
+    margin-left: 2rem;
+}
+
+#save-price{
+    margin-top: 2rem;
+    text-align: center;
+    padding-right: 10rem;
+
+}
+
+.stock-remaining {
+    display:flex;
+}
+
+.stock-type{
+    padding-left: 1rem;
+}
+
+
+
