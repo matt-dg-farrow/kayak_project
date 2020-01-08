@@ -1,21 +1,21 @@
 package com.bae.persistence.domain;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "custId")
 	private Long id;
 
@@ -26,8 +26,9 @@ public class Customer {
 	private String emergContactNumber;
 	private String emergRelation;
 
-	@OneToMany(mappedBy = "customer")
-	private Set<Booking> bookings;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cust_id")
+	private List<Equipment> equipment;
 
 	public Customer() {
 		super();
@@ -48,7 +49,7 @@ public class Customer {
 	public String toString() {
 		return "Customer [id=" + id + ", custFirstName=" + custFirstName + ", custSurname=" + custSurname
 				+ ", emergFirstName=" + emergFirstName + ", emergSurname=" + emergSurname + ", contactNumber="
-				+ emergContactNumber + ", emergRelation=" + emergRelation + ", bookings=" + bookings + "]";
+				+ emergContactNumber + ", emergRelation=" + emergRelation + ", equipment=" + equipment + "]";
 	}
 
 	public Long getId() {
@@ -107,12 +108,12 @@ public class Customer {
 		this.emergRelation = emergRelation;
 	}
 
-	public Set<Booking> getBookings() {
-		return bookings;
+	public List<Equipment> getEquipment() {
+		return equipment;
 	}
 
-	public void setBookings(Set<Booking> bookings) {
-		this.bookings = bookings;
+	public void setEquipment(List<Equipment> equipment) {
+		this.equipment = equipment;
 	}
 
 }

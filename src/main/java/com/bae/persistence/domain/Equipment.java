@@ -1,13 +1,12 @@
 package com.bae.persistence.domain;
 
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
 
 @Entity
 public class Equipment {
@@ -18,9 +17,6 @@ public class Equipment {
 	private Long id;
 	private String equipType;
 	private int price;
-
-	@OneToMany(mappedBy = "customer")
-	private Set<Booking> bookings;
 
 	public Equipment() {
 		super();
@@ -59,14 +55,6 @@ public class Equipment {
 
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	public Set<Booking> getBookings() {
-		return bookings;
-	}
-
-	public void setBookings(Set<Booking> bookings) {
-		this.bookings = bookings;
 	}
 
 }

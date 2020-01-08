@@ -15,13 +15,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.bae.persistence.domain.Customer;
 import com.bae.persistence.domain.Equipment;
 import com.bae.persistence.repo.EquipmentRepo;
 import com.bae.service.EquipmentService;
 
 @RunWith(SpringRunner.class)
-public class EquipmentServiceTest {
+public class EquipmentServiceUnitTest {
 	
 	@InjectMocks
 	private EquipmentService service;
@@ -70,6 +69,13 @@ public class EquipmentServiceTest {
 		
 		verify(this.repo, times(1)).deleteById(1L);
 		
+	}
+	
+	@Test
+	public void deleteAllTest() {
+		this.service.deleteAll();
+		
+		verify(this.repo, times(1)).deleteAll();
 	}
 	
 	

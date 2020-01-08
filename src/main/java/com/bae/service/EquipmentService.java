@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.bae.persistence.domain.Customer;
 import com.bae.persistence.domain.Equipment;
 import com.bae.persistence.repo.EquipmentRepo;
 
@@ -24,8 +23,7 @@ public class EquipmentService {
 	}
 
 	public List<Equipment> readEquipments() {
-		List<Equipment> equipment = this.equipRepo.findAll();
-		return equipment;
+		return this.equipRepo.findAll();
 	}
 
 	public Equipment updateEquipment(Equipment equip, Long id) {
@@ -37,6 +35,10 @@ public class EquipmentService {
 
 	public void deleteEquipment(Long id) {
 		this.equipRepo.deleteById(id);
+	}
+	
+	public void deleteAll() {
+		this.equipRepo.deleteAll();
 	}
 
 }
