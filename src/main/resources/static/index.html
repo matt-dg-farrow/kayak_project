@@ -12,7 +12,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="getCustomerInfo();">
 
     <div id="navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,19 +30,22 @@
         </nav>
     </div>
 
+
     <div id="input-fields">
+        <form action="index.html">
 
         <div id="input-fields-LHS" class="upper-half-column left">
             <div>
                 <h1 class=detail-header>Customer Details:</h1>
             </div>
             <div class="input-group mb-3">
-                <input type="text" placeholder="First Name">
+                <input id="newCustFirstName" type="text" placeholder="First Name">
             </div>
 
             <div class="input-group mb-3">
-                <input type="text" placeholder="Last Name">
+                <input id="newCustSurname" type="text" placeholder="Last Name">
             </div>
+
         </div>
 
         <div id="input-fields-RHS" class="upper-half-column mid">
@@ -50,54 +53,61 @@
                 <h1 class=detail-header>Emergency Contact Details:</h1>
             </div>
             <div class="input-group mb-3">
-                <input type="text" placeholder="First Name">
+                <input id="newEmergFirstName" type="text" placeholder="First Name">
             </div>
 
             <div class="input-group mb-3">
-                <input type="text" placeholder="Last Name">
+                <input id="newEmergSurname" type="text" placeholder="Last Name">
             </div>
             <div class="input-group mb-3">
-                <input type="text" placeholder="Mobile Number">
+                <input id="newEmergContactNumber" type="text" placeholder="Mobile Number">
             </div>
             <div class="input-group mb-3">
-                <input type="text" placeholder="Relation to Customer">
+                <input id="newEmergRelation" type="text" placeholder="Relation to Customer">
             </div>
 
         </div>
 
         <div id="add-button" class="upper-half-column right">
-            <button type="submit" class="btn btn-success">Add Customer</button>
+            <button type="button" class="btn btn-success" onclick="addCustomer();">Add Customer</button>
         </div>
+    </form>
     </div>
     <hr />
     <div class="lower-half">
-        <div id="table-of-customers" class="lower-half-column LHS">
-            <table class="table table-hover table-bordered">
+        <div  class="lower-half-column LHS">
+            <table id="table-of-customers" class="table table-hover table-bordered">
                 <thead>
                     <tr id="table-header">
-                        <td colspan="3">Customer Details</td>
-                        <td colspan="4">Emergency Details</td>
+                        <th colspan="2">Customer Details</th>
+                        <th colspan="4">Emergency Details</th>
                     </tr>
                     <tr>
-                        <th scope="col">Customer ID</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Mobile Number</th>
-                        <th scope="col">Relation</th>
+                        <th id="custFirstName" scope="col">First Name</th>
+                        <th id="custSurname" scope="col">Last Name</th>
+                        <th id="emergFirstName" scope="col">First Name</th>
+                        <th id="emergSurname" scope="col">Last Name</th>
+                        <th id="emergContactNumber" scope="col">Mobile Number</th>
+                        <th id="emergRelation" scope="col">Relation</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- contents of the table, eg -->
-                    <th scope="row">1</th>
-                    <!-- above line not needed? -->
+                <tbody id="table-body">
+                    <!-- <tr>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>Bill</td>
                     <td>Billington</td>
                     <td>07872123456</td>
                     <td>Friend</td>
+                    </tr>
+                    <tr>
+                    <td>Sue</td>
+                    <td>Dave</td>
+                    <td>Andy</td>
+                    <td>Box</td>
+                    <td>07872888456</td>
+                    <td>Uncle</td>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -113,14 +123,20 @@
                 <h3>0/300</h3>
             </div>
             <div>
-                <input id="search-box" placeholder="Search...">
+                <input id="search-box" onkeyup="tableSearch()" placeholder="Search...">
             </div>
             <div id="remove-buttons">
-                <button id="remove-select" type="submit" class="btn btn-outline-primary">Remove Selected</button>
+                <button id="remove-select" type="submit" class="btn btn-outline-primary" onclick="getCustomers()">Remove Selected</button>
                 <button id="remove-all" type="submit" class="btn btn-primary">Remove All</button>
             </div>
         </div>
     </div>
+    <!-- <div onload="getCustomerInfo()"></div> -->
+
+   
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="JS/index.js"></script>
+
 
 </html>
