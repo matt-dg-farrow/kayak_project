@@ -26,7 +26,8 @@ table.onclick = highlight;
 
 function deleteCustomer() {
   let id = document.getElementsByClassName("selected")[0].childNodes[0].innerHTML;
-  axios.delete("/deleteCustomer/" + id)
+  // axios.get("http://localhost:8080/deleteCustomer")
+  axios.delete("/KayakProject/deleteCustomer/" + id)
     .then(response => {
       console.log(response);
       location.reload();
@@ -43,7 +44,8 @@ function addEquipmentToCust() {
       custEquipment.push(equipList[i].id)
     }
   }
-  axios.put("/updateCustomer?id=" + custData[0].innerHTML, {
+  // axios.get("http://localhost:8080/updateCustomer?id=" + custData[0].innerHTML, {
+  axios.put("/KayakProject/updateCustomer?id=" + custData[0].innerHTML, {
     custFirstName: custData[1].innerHTML,
     custSurname: custData[2].innerHTML,
     emergFirstName: custData[3].innerHTML,
@@ -62,7 +64,7 @@ function addCustomer() {
   let newEmergContactNumber = document.getElementById("newEmergContactNumber").value;
   let newEmergRelation = document.getElementById("newEmergRelation").value;
 
-  axios.post('/createCustomer', {
+  axios.post('/KayakProject/createCustomer', {
     custFirstName: newCustFirstName,
     custSurname: newCustSurname,
     emergFirstName: newEmergFirstName,
@@ -129,7 +131,8 @@ function getCustomerInfo() {
 }
 
 function deleteAll() {
-  axios.delete("/deleteAllCustomers")
+  // axios.get("http://localhost:8080/deleteAllCustomers")
+  axios.delete("/KayakProject/deleteAllCustomers")
     .then(response => {
       console.log(response);
       location.reload();
