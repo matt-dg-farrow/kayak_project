@@ -78,7 +78,7 @@ function addCustomer() {
 
 
 const customerData =
-  axios.get("http://localhost:8080/getAllCustomers")
+  axios.get("http://3.9.36.142:8181/getAllCustomers")
   .then((response) => {
     console.log(response.data);
     return response.data;
