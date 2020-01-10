@@ -78,7 +78,8 @@ function addCustomer() {
 
 
 const customerData =
-  axios.get("/getAllCustomers")
+  // axios.get("http://localhost:8080/getAllCustomers")
+  axios.get("/KayakProject/getAllCustomers")
   .then((response) => {
     console.log(response.data);
     return response.data;
