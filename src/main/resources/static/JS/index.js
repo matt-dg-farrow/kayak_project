@@ -51,6 +51,7 @@ function addEquipmentToCust() {
         }
       }
     }
+    // add this to the above if
 
 
     // axios.get("http://localhost:8080/updateCustomer?id=" + custData[0].innerHTML, {
