@@ -12,7 +12,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="getCustomerInfo();">
 
     <div id="navbar">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,11 +36,10 @@
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr id="table-header">
-                        <td colspan="3">Customer Details</td>
+                        <td colspan="2">Customer Details</td>
                         <td colspan="4">Emergency Details</td>
                     </tr>
                     <tr>
-                        <th scope="col">Customer ID</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
                         <th scope="col">First Name</th>
@@ -49,16 +48,7 @@
                         <th scope="col">Relation</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- contents of the table, eg -->
-                    <th scope="row">1</th>
-                    <!-- above line not needed? -->
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>Bill</td>
-                    <td>Billington</td>
-                    <td>07872123456</td>
-                    <td>Friend</td>
+                <tbody id="table-body">
                 </tbody>
             </table>
         </div>
@@ -79,7 +69,7 @@
         <div id="equip-rent" class="lower-half-column">
             <h1>Equipment Rented:</h1>
             <div id="rent-checkboxes">
-                
+
                 <div>
                     <input type="checkbox" class="form-check-input" id="kayak">
                     <label class="form-check-label" for="kayak">Kayak</label>
@@ -113,20 +103,22 @@
                     <p class="stock-type centre-text">Kayak</p>
                 </div>
                 <div id="BA-stock" class="stock-remaining">
-                    <p class="stock-number centre-text">20  </p>
+                    <p class="stock-number centre-text">20 </p>
                     <p class="stock-type centre-text">BA</p>
                 </div>
                 <div id="helmet-stock" class="stock-remaining">
-                    <p class="stock-number centre-text">20  </p>
+                    <p class="stock-number centre-text">20 </p>
                     <p class="stock-type centre-text">Helmet</p>
                 </div>
                 <div id="paddle-stock" class="stock-remaining">
-                    <p class="stock-number centre-text">20  </p>
+                    <p class="stock-number centre-text">20 </p>
                     <p class="stock-type centre-text">Paddle</p>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="JS/index.js"></script>
 
 </html>

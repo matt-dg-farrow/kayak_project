@@ -34,48 +34,48 @@
     <div id="input-fields">
         <form action="index.html">
 
-        <div id="input-fields-LHS" class="upper-half-column left">
-            <div>
-                <h1 class=detail-header>Customer Details:</h1>
-            </div>
-            <div class="input-group mb-3">
-                <input id="newCustFirstName" type="text" placeholder="First Name">
+            <div id="input-fields-LHS" class="upper-half-column left">
+                <div>
+                    <h1 class=detail-header>Customer Details:</h1>
+                </div>
+                <div class="input-group mb-3">
+                    <input id="newCustFirstName" type="text" placeholder="First Name">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input id="newCustSurname" type="text" placeholder="Last Name">
+                </div>
+
             </div>
 
-            <div class="input-group mb-3">
-                <input id="newCustSurname" type="text" placeholder="Last Name">
+            <div id="input-fields-RHS" class="upper-half-column mid">
+                <div>
+                    <h1 class=detail-header>Emergency Contact Details:</h1>
+                </div>
+                <div class="input-group mb-3">
+                    <input id="newEmergFirstName" type="text" placeholder="First Name">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input id="newEmergSurname" type="text" placeholder="Last Name">
+                </div>
+                <div class="input-group mb-3">
+                    <input id="newEmergContactNumber" type="text" placeholder="Mobile Number">
+                </div>
+                <div class="input-group mb-3">
+                    <input id="newEmergRelation" type="text" placeholder="Relation to Customer">
+                </div>
+
             </div>
 
-        </div>
-
-        <div id="input-fields-RHS" class="upper-half-column mid">
-            <div>
-                <h1 class=detail-header>Emergency Contact Details:</h1>
+            <div id="add-button" class="upper-half-column right">
+                <button type="button" class="btn btn-success" onclick="addCustomer();">Add Customer</button>
             </div>
-            <div class="input-group mb-3">
-                <input id="newEmergFirstName" type="text" placeholder="First Name">
-            </div>
-
-            <div class="input-group mb-3">
-                <input id="newEmergSurname" type="text" placeholder="Last Name">
-            </div>
-            <div class="input-group mb-3">
-                <input id="newEmergContactNumber" type="text" placeholder="Mobile Number">
-            </div>
-            <div class="input-group mb-3">
-                <input id="newEmergRelation" type="text" placeholder="Relation to Customer">
-            </div>
-
-        </div>
-
-        <div id="add-button" class="upper-half-column right">
-            <button type="button" class="btn btn-success" onclick="addCustomer();">Add Customer</button>
-        </div>
-    </form>
+        </form>
     </div>
     <hr />
     <div class="lower-half">
-        <div  class="lower-half-column LHS">
+        <div class="lower-half-column LHS">
             <table id="table-of-customers" class="table table-hover table-bordered">
                 <thead>
                     <tr id="table-header">
@@ -126,14 +126,12 @@
                 <input id="search-box" onkeyup="tableSearch()" placeholder="Search...">
             </div>
             <div id="remove-buttons">
-                <button id="remove-select" type="submit" class="btn btn-outline-primary" onclick="getCustomers()">Remove Selected</button>
-                <button id="remove-all" type="submit" class="btn btn-primary">Remove All</button>
+                <button id="remove-select" type="submit" class="btn btn-outline-primary"
+                    onclick="deleteCustomer()">Remove Selected</button>
+                <button id="remove-all" type="submit" class="btn btn-primary" onclick="deleteAll()">Remove All</button>
             </div>
         </div>
     </div>
-    <!-- <div onload="getCustomerInfo()"></div> -->
-
-   
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="JS/index.js"></script>
