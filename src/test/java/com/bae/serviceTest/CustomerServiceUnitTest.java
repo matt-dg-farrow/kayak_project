@@ -84,11 +84,19 @@ public class CustomerServiceUnitTest {
 	}
 
 	@Test
-	public void getCustomersTest() {
+	public void getAllCustomersTest() {
 		Mockito.when(custRepo.findAll()).thenReturn(customers);
-		assertEquals(customers, service.readCustomers());
+		assertEquals(customers, service.getAllCustomers());
 
 		verify(this.custRepo, times(1)).findAll();
+	}
+	
+	@Test
+	public void getOneCustomerTest() {
+		Mockito.when(custRepo.getOne(1L)).thenReturn(cust1);
+		assertEquals(customers.get(0), service.getOneCustomer(1L));
+
+		verify(this.custRepo, times(1)).getOne(1L);
 	}
 
 	@Test

@@ -35,9 +35,14 @@ public class CustomerController {
 		return this.service.createCust(cust);
 	}
 
-	@GetMapping("/getCustomer")
-	public List<Customer> getCustomer() {
-		return this.service.readCustomers();
+	@GetMapping("/getAllCustomers")
+	public List<Customer> getAllCustomers() {
+		return this.service.getAllCustomers();
+	}
+	
+	@GetMapping("/getCustomer/{id}")
+	public Customer getOneCustomer(@PathVariable Long id) {
+		return this.service.getOneCustomer(id);
 	}
 
 	@PutMapping("/updateCustomer")

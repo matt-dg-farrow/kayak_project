@@ -76,40 +76,26 @@
     <hr />
     <div class="lower-half">
         <div class="lower-half-column LHS">
-            <table id="table-of-customers" class="table table-hover table-bordered">
-                <thead>
-                    <tr id="table-header">
-                        <th colspan="2">Customer Details</th>
-                        <th colspan="4">Emergency Details</th>
-                    </tr>
-                    <tr>
-                        <th id="custFirstName" scope="col">First Name</th>
-                        <th id="custSurname" scope="col">Last Name</th>
-                        <th id="emergFirstName" scope="col">First Name</th>
-                        <th id="emergSurname" scope="col">Last Name</th>
-                        <th id="emergContactNumber" scope="col">Mobile Number</th>
-                        <th id="emergRelation" scope="col">Relation</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                    <!-- <tr>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>Bill</td>
-                    <td>Billington</td>
-                    <td>07872123456</td>
-                    <td>Friend</td>
-                    </tr>
-                    <tr>
-                    <td>Sue</td>
-                    <td>Dave</td>
-                    <td>Andy</td>
-                    <td>Box</td>
-                    <td>07872888456</td>
-                    <td>Uncle</td>
-                    </tr> -->
-                </tbody>
-            </table>
+            <div class="table-div">
+                <table id="table-of-customers" onclick="highlight();" class="table table-hover table-bordered">
+                    <thead>
+                        <tr class="table-header">
+                            <th colspan="2">Customer Details</th>
+                            <th colspan="4">Emergency Details</th>
+                        </tr>
+                        <tr class="table-header">
+                            <th id="custFirstName" scope="col">First Name</th>
+                            <th id="custSurname" scope="col">Last Name</th>
+                            <th id="emergFirstName" scope="col">First Name</th>
+                            <th id="emergSurname" scope="col">Last Name</th>
+                            <th id="emergContactNumber" scope="col">Mobile Number</th>
+                            <th id="emergRelation" scope="col">Relation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 

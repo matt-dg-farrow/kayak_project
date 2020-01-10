@@ -62,11 +62,17 @@ public class CustControllerTest {
 	}
 
 	@Test
-	public void getCustomersTest() {
-		Mockito.when(service.readCustomers()).thenReturn(this.customers);
-		assertEquals(this.customers, controller.getCustomer());
-		verify(this.service, times(1)).readCustomers();
-
+	public void getALlCustomersTest() {
+		Mockito.when(service.getAllCustomers()).thenReturn(this.customers);
+		assertEquals(this.customers, controller.getAllCustomers());
+		verify(this.service, times(1)).getAllCustomers();
+	}
+	
+	@Test
+	public void getOneCustomerTest() {
+		Mockito.when(service.getOneCustomer(1L)).thenReturn(cust1);
+		assertEquals(this.customers.get(0), controller.getOneCustomer(1L));
+		verify(this.service, times(1)).getOneCustomer(1L);
 	}
 
 	@Test

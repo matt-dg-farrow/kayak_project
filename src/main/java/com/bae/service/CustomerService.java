@@ -55,8 +55,12 @@ public class CustomerService {
 
 	}
 
-	public List<Customer> readCustomers() {
+	public List<Customer> getAllCustomers() {
 		return this.custRepo.findAll();
+	}
+	
+	public Customer getOneCustomer(Long id) {
+		return this.custRepo.getOne(id);
 	}
 
 	public Customer updateCustomer(Customer cust, Long id) {

@@ -32,14 +32,14 @@
 
 
     <div id="upper-half">
-        <div id="table-of-customers">
-            <table class="table table-hover table-bordered">
+        <div class="table-div">
+            <table id="table-of-customers" onclick="highlight();" class="table table-hover table-bordered">
                 <thead>
-                    <tr id="table-header">
-                        <td colspan="2">Customer Details</td>
-                        <td colspan="4">Emergency Details</td>
+                    <tr class="table-header">
+                        <th colspan="2">Customer Details</th>
+                        <th colspan="4">Emergency Details</th>
                     </tr>
-                    <tr>
+                    <tr class="table-header">
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
                         <th scope="col">First Name</th>
@@ -48,8 +48,10 @@
                         <th scope="col">Relation</th>
                     </tr>
                 </thead>
+                <!-- <div class="table-body-div"> -->
                 <tbody id="table-body">
                 </tbody>
+                <!-- </div> -->
             </table>
         </div>
 
@@ -58,7 +60,7 @@
         <div id="upper-half-RHS">
             <div>
 
-                <input id="search-box" placeholder="Search...">
+                <input id="search-box" onkeyup="tableSearch()" placeholder="Search...">
             </div>
         </div>
     </div>
@@ -91,7 +93,7 @@
 
         </div>
         <div id="save-price" class="lower-half-column mid-column">
-            <button type="submit" class="btn btn-success" id="save-button">Save</button>
+            <button type="submit" class="btn btn-success" id="save-button" onclick="addEquipmentToCust();">Save</button>
             <h2 id="total-price" class="centre-text">Total Price: £00.00</h2>
         </div>
 
