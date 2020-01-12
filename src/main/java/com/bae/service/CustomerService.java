@@ -48,8 +48,7 @@ public class CustomerService {
 		if (cust.getEquipment() != null) {
 			return cust.getEquipment().stream().map(equip -> equip.getPrice()).reduce((acc, next) -> (acc + next))
 					.orElse(0);
-		}
-		else {
+		} else {
 			return 0;
 		}
 
@@ -58,7 +57,7 @@ public class CustomerService {
 	public List<Customer> getAllCustomers() {
 		return this.custRepo.findAll();
 	}
-	
+
 	public Customer getOneCustomer(Long id) {
 		return this.custRepo.getOne(id);
 	}

@@ -62,12 +62,12 @@ public class CustControllerTest {
 	}
 
 	@Test
-	public void getALlCustomersTest() {
+	public void getAllCustomersTest() {
 		Mockito.when(service.getAllCustomers()).thenReturn(this.customers);
 		assertEquals(this.customers, controller.getAllCustomers());
 		verify(this.service, times(1)).getAllCustomers();
 	}
-	
+
 	@Test
 	public void getOneCustomerTest() {
 		Mockito.when(service.getOneCustomer(1L)).thenReturn(cust1);
@@ -85,6 +85,13 @@ public class CustControllerTest {
 	public void deleteAllTest() {
 		this.controller.deleteAll();
 		verify(this.service, times(1)).deleteAll();
+	}
+
+	@Test
+	public void getCapacityTest() {
+		Mockito.when(service.capacity()).thenReturn(Long.valueOf(customers.size()));
+		assertEquals(2, this.controller.getCapacity());
+
 	}
 
 }

@@ -78,17 +78,33 @@ hr {
 .RHS {
     width: 20%;
     text-align: centre;
-}
-
+}                               
+         
 /* #lower-half-RHS {
     display: flex;
     flex-direction: column;
     margin-left: auto;
-    margin-right: auto;
+    margin-       right: auto;
     
 } */
 
-.dot {
+.dot-green {
+    height: 125px;
+    width: 125px;
+    background-color: lime;
+    border-radius: 50%;
+    display: inline-block;
+}                                                               
+
+.dot-orange {
+    height: 125px;
+    width: 125              px;
+    background-color: orange;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-red {
     height: 125px;
     width: 125px;
     background-color: red;
@@ -96,12 +112,10 @@ hr {
     display: inline-block;
 }
 
-
-
 /* #no-of-customers {} */
-
-.selected {
-    background-color: aquamarine;
+                                                                                                                                                                            
+.selected {                   
+    background-color: aquamarine;                                                                    
 }
 
 .hidden {

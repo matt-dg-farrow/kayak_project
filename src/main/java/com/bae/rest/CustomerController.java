@@ -39,7 +39,7 @@ public class CustomerController {
 	public List<Customer> getAllCustomers() {
 		return this.service.getAllCustomers();
 	}
-	
+
 	@GetMapping("/getCustomer/{id}")
 	public Customer getOneCustomer(@PathVariable Long id) {
 		return this.service.getOneCustomer(id);
@@ -60,4 +60,8 @@ public class CustomerController {
 		this.service.deleteAll();
 	}
 
+	@GetMapping("/getCapacity")
+	public Long getCapacity() {
+		return this.service.capacity();
+	}
 }
