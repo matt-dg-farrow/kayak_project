@@ -1,13 +1,18 @@
 package com.bae.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Service;
 
+import com.bae.CapacityReachedException;
+import com.bae.EquipmentUnavailableException;
 import com.bae.persistence.domain.Customer;
+import com.bae.persistence.domain.Equipment;
 import com.bae.persistence.repo.CustomerRepo;
 import com.bae.persistence.repo.EquipmentRepo;
 
@@ -87,5 +92,30 @@ public class CustomerService {
 
 	public Long capacity() {
 		return this.custRepo.count();
+	}
+
+	private Equipment findAvailable(String type, List<Equipment> all) {
+		for (Equipment e : all) {
+			if (e.getEquipType().equals(type)) {
+				return e;
+			}
+		}
+		throw new EquipmentUnavailableException("No more " + type + "s are available");
+	}
+
+	public void rentEquip(Long custID, List<String> equipTypes) {
+		Customer cust = this.custRepo.findById(custID).orElseThrow(EntityNotFoundException::new);
+
+		List<Equipment> bookedEquip = new ArrayList<>();
+		Stream.of(this.getAllCustomers()).flatMap(c -> c.stream()).map(Customer::getEquipment).forEach(bookedEquip::addAll);
+
+		List<Equipment> unbookedEquip = this.equipRepo.findAll().stream().filter(e -> !bookedEquip.contains(e))
+				.collect(Collectors.toList());
+		
+		List<Equipment>  custNewEquip = equipTypes.stream().map(t -> findAvailable(t, unbookedEquip)).collect(Collectors.toList());
+
+		cust.setEquipment(custNewEquip);
+		
+		this.custRepo.save(cust);
 	}
 }
