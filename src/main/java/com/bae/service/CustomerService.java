@@ -83,10 +83,15 @@ public class CustomerService {
 	}
 
 	public void deleteCustomer(Long id) {
+		this.custRepo.getOne(id).setEquipment(null);
 		this.custRepo.deleteById(id);
 	}
 
 	public void deleteAll() {
+		List<Customer> customers = this.custRepo.findAll();
+		for (Customer cust : customers) {
+			cust.setEquipment(null);
+		}
 		this.custRepo.deleteAll();
 	}
 
@@ -109,13 +114,57 @@ public class CustomerService {
 		List<Equipment> bookedEquip = new ArrayList<>();
 		Stream.of(this.getAllCustomers()).flatMap(c -> c.stream()).map(Customer::getEquipment).forEach(bookedEquip::addAll);
 
-		List<Equipment> unbookedEquip = this.equipRepo.findAll().stream().filter(e -> !bookedEquip.contains(e))
+		List<Equipment> availableEquip = this.equipRepo.findAll().stream().filter(e -> !bookedEquip.contains(e))
 				.collect(Collectors.toList());
 		
-		List<Equipment>  custNewEquip = equipTypes.stream().map(t -> findAvailable(t, unbookedEquip)).collect(Collectors.toList());
+		List<Equipment>  custNewEquip = equipTypes.stream().map(t -> findAvailable(t, availableEquip)).collect(Collectors.toList());
 
 		cust.setEquipment(custNewEquip);
 		
 		this.custRepo.save(cust);
+	}
+	
+	public List<Integer> getStock() {
+		
+		List<Equipment> bookedEquip = new ArrayList<>();
+		Stream.of(this.getAllCustomers()).flatMap(c -> c.stream()).map(Customer::getEquipment).forEach(bookedEquip::addAll);
+		
+		List<Equipment> availableEquip = this.equipRepo.findAll().stream().filter(e -> !bookedEquip.contains(e))
+				.collect(Collectors.toList());
+		
+		int kayakStock = 0;
+		int helmetStock = 0;
+		int BAStock = 0;
+		int paddleStock = 0;
+
+		
+		for (Equipment equip : availableEquip) {
+			String equipType = equip.getEquipType();
+			switch (equipType) {
+			case "kayak":
+				kayakStock++;
+				break;
+			case "helmet":
+				helmetStock++;
+				break;
+			case "BA":
+				BAStock++;
+				break;
+			case "paddle":
+				paddleStock++;
+				break;
+			default:
+				break;
+				
+			}
+		}
+		
+		List<Integer> stockTotal = new ArrayList<>();
+		stockTotal.add(kayakStock);
+		stockTotal.add(BAStock);
+		stockTotal.add(helmetStock);
+		stockTotal.add(paddleStock);
+		
+		return stockTotal;
 	}
 }

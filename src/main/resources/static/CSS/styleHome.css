@@ -26,11 +26,11 @@
     padding-left: 4rem;
 }
 
-
-
 #add-button {
     margin-left: 3rem;
     margin-top: 5rem;
+    padding: 0.5rem;
+    width: 12rem;
 }
 
 #input-fields:after {
@@ -47,8 +47,6 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
-
-
 
 #table-of-customers {
     margin-left: 2rem;
@@ -71,22 +69,15 @@ hr {
     overflow: scroll;
 }
 
-.LHS {
+/* .LHS {
     width: 80%;
-}
+} */
 
 .RHS {
     width: 20%;
-    text-align: centre;
-}                               
-         
-/* #lower-half-RHS {
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-       right: auto;
-    
-} */
+    text-align: center;
+
+}
 
 .dot-green {
     height: 125px;
@@ -94,11 +85,11 @@ hr {
     background-color: lime;
     border-radius: 50%;
     display: inline-block;
-}                                                               
+}
 
 .dot-orange {
     height: 125px;
-    width: 125              px;
+    width: 125 px;
     background-color: orange;
     border-radius: 50%;
     display: inline-block;
@@ -112,12 +103,22 @@ hr {
     display: inline-block;
 }
 
-/* #no-of-customers {} */
-                                                                                                                                                                            
-.selected {                   
-    background-color: aquamarine;                                                                    
+.selected {
+    background-color: aquamarine;
 }
 
 .hidden {
     display: none;
+}
+
+#remove-select {
+    padding: 0.5rem;
+    margin: 1rem;
+    width: 12rem;
+}
+
+#remove-all {
+    padding: 0.5rem;
+    margin: 1rem;
+    width: 12rem;
 }

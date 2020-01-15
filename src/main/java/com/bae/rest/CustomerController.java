@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.CapacityReachedException;
 import com.bae.persistence.domain.Customer;
-import com.bae.persistence.domain.Equipment;
 import com.bae.service.CustomerService;
 
 @RestController
@@ -51,6 +50,21 @@ public class CustomerController {
 	public Customer getOneCustomer(@PathVariable Long id) {
 		return this.service.getOneCustomer(id);
 	}
+	
+	@GetMapping("/getCapacity")
+	public Long getCapacity() {
+		return this.service.capacity();
+	}
+	
+	@GetMapping("/getStock")
+	public List<Integer> getStock() {
+		return this.service.getStock();
+	}
+	
+	@GetMapping("/getPrice/{id}")
+	public int getPrice(@PathVariable Long id) {
+		return this.service.custEquipCost(id);
+	}
 
 	@PutMapping("/updateCustomer")
 	public Customer updateCustomer(@PathParam("id") Long id, @RequestBody Customer cust) {
@@ -67,8 +81,4 @@ public class CustomerController {
 		this.service.deleteAll();
 	}
 
-	@GetMapping("/getCapacity")
-	public Long getCapacity() {
-		return this.service.capacity();
-	}
 }

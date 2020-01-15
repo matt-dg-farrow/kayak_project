@@ -39,7 +39,7 @@ INSERT INTO equipment VALUES
 (default, 'paddle', 20, null), (default, 'paddle', 20, null),
 (default, 'paddle', 20, null), (default, 'paddle', 20, null),
 (default, 'paddle', 20, null), (default, 'paddle', 20, null),
-(default, 'paddle', 20, null), (default, 'paddle', 60, null),
+(default, 'paddle', 20, null), (default, 'paddle', 20, null),
 (default, 'paddle', 20, null), (default, 'paddle', 20, null),
 (default, 'paddle', 20, null), (default, 'paddle', 20, null);
 

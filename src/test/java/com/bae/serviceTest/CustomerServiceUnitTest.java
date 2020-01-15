@@ -101,7 +101,7 @@ public class CustomerServiceUnitTest {
 
 	@Test
 	public void deleteCustomerTest() {
-
+		Mockito.when(custRepo.getOne(1L)).thenReturn(cust1);
 		this.service.deleteCustomer(1L);
 
 		verify(this.custRepo, times(1)).deleteById(1L);
@@ -109,6 +109,7 @@ public class CustomerServiceUnitTest {
 
 	@Test
 	public void deleteAllTest() {
+		Mockito.when(custRepo.findAll()).thenReturn(customers);
 		this.service.deleteAll();
 
 		verify(this.custRepo, times(1)).deleteAll();
