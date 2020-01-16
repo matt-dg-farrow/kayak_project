@@ -36,36 +36,42 @@ function getCustomerInfo() {
 
       let customerId = document.createElement("td")
       customerId.innerHTML = customer.id;
-      customerId.className = "hidden";
+      customerId.className = "hidden customerId";
       customerInfo.appendChild(customerId);
 
       let customerFirstName = document.createElement("td");
       customerFirstName.innerHTML = customer.custFirstName;
+      customerFirstName.className = "customerFirstName";
       customerInfo.appendChild(customerFirstName);
 
       let customerSurname = document.createElement("td");
       customerSurname.innerHTML = customer.custSurname;
+      customerSurname.className = "customerSurname";
       customerInfo.appendChild(customerSurname);
 
       let emergFirstName = document.createElement("td");
       emergFirstName.innerHTML = customer.emergFirstName;
+      emergFirstName.className = "emergFirstName";
       customerInfo.appendChild(emergFirstName);
 
       let emergSurname = document.createElement("td");
       emergSurname.innerHTML = customer.emergSurname;
+      emergSurname.className = "emergSurname";
       customerInfo.appendChild(emergSurname);
 
       let emergContactNumber = document.createElement("td");
       emergContactNumber.innerHTML = customer.emergContactNumber;
+      emergContactNumber.className = "emergContactNumber";
       customerInfo.appendChild(emergContactNumber);
 
       let emergRelation = document.createElement("td");
       emergRelation.innerHTML = customer.emergRelation;
+      emergRelation.className = "emergRelation";
       customerInfo.appendChild(emergRelation);
 
       let equipmentInfo = document.createElement("td")
       equipmentInfo.innerHTML = customer.equipment;
-      equipmentInfo.className = "hidden";
+      equipmentInfo.className = "hidden equipmentInfo";
       customerInfo.appendChild(equipmentInfo);
 
       customerList.appendChild(customerInfo);
@@ -251,8 +257,8 @@ function deleteCustomer() {
       axios.delete("/KayakProject/deleteCustomer/" + id)
         .then(response => {
           console.log(response);
-          location.reload();
           alert("Customer deleted.");
+          location.reload();
           setStock();
         })
     } else {}
@@ -267,8 +273,8 @@ function deleteAll() {
     axios.delete("/KayakProject/deleteAllCustomers")
       .then(response => {
         console.log(response);
-        location.reload();
         alert("All customers deleted.");
+        location.reload();
         setStock();
       })
   } else {}
