@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.persistence.domain.Customer;
-import com.bae.service.CapacityReachedException;
 import com.bae.service.CustomerService;
+import com.bae.utilities.CapacityReachedException;
 
 @RestController
 @CrossOrigin
@@ -34,10 +35,35 @@ public class CustomerController {
 	public Customer createCustomer(@RequestBody Customer cust) throws CapacityReachedException {
 		return this.service.createCust(cust);
 	}
+	
+	@PatchMapping("/rentEquip/{id}")
+	public void rentEquip(@PathVariable Long id, @RequestBody List<String> equipTypes) {
+		this.service.rentEquip(id, equipTypes);
+	}
 
-	@GetMapping("/getCustomer")
-	public List<Customer> getCustomer() {
-		return this.service.readCustomers();
+	@GetMapping("/getAllCustomers")
+	public List<Customer> getAllCustomers() {
+		return this.service.getAllCustomers();
+	}
+
+	@GetMapping("/getCustomer/{id}")
+	public Customer getOneCustomer(@PathVariable Long id) {
+		return this.service.getOneCustomer(id);
+	}
+	
+	@GetMapping("/getCapacity")
+	public Long getCapacity() {
+		return this.service.capacity();
+	}
+	
+	@GetMapping("/getStock")
+	public List<Integer> getStock() {
+		return this.service.getStock();
+	}
+	
+	@GetMapping("/getPrice/{id}")
+	public int getPrice(@PathVariable Long id) {
+		return this.service.custEquipCost(id);
 	}
 
 	@PutMapping("/updateCustomer")

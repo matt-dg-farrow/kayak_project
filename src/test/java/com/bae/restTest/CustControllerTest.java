@@ -17,8 +17,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.bae.persistence.domain.Customer;
 import com.bae.rest.CustomerController;
-import com.bae.service.CapacityReachedException;
 import com.bae.service.CustomerService;
+import com.bae.utilities.CapacityReachedException;
 
 @RunWith(SpringRunner.class)
 public class CustControllerTest {
@@ -62,11 +62,17 @@ public class CustControllerTest {
 	}
 
 	@Test
-	public void getCustomersTest() {
-		Mockito.when(service.readCustomers()).thenReturn(this.customers);
-		assertEquals(this.customers, controller.getCustomer());
-		verify(this.service, times(1)).readCustomers();
+	public void getAllCustomersTest() {
+		Mockito.when(service.getAllCustomers()).thenReturn(this.customers);
+		assertEquals(this.customers, controller.getAllCustomers());
+		verify(this.service, times(1)).getAllCustomers();
+	}
 
+	@Test
+	public void getOneCustomerTest() {
+		Mockito.when(service.getOneCustomer(1L)).thenReturn(cust1);
+		assertEquals(this.customers.get(0), controller.getOneCustomer(1L));
+		verify(this.service, times(1)).getOneCustomer(1L);
 	}
 
 	@Test
@@ -79,6 +85,13 @@ public class CustControllerTest {
 	public void deleteAllTest() {
 		this.controller.deleteAll();
 		verify(this.service, times(1)).deleteAll();
+	}
+
+	@Test
+	public void getCapacityTest() {
+		Mockito.when(service.capacity()).thenReturn(Long.valueOf(customers.size()));
+		assertEquals(2, this.controller.getCapacity());
+
 	}
 
 }

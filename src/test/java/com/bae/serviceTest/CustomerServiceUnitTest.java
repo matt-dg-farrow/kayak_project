@@ -20,8 +20,8 @@ import com.bae.persistence.domain.Customer;
 import com.bae.persistence.domain.Equipment;
 import com.bae.persistence.repo.CustomerRepo;
 import com.bae.persistence.repo.EquipmentRepo;
-import com.bae.service.CapacityReachedException;
 import com.bae.service.CustomerService;
+import com.bae.utilities.CapacityReachedException;
 
 @RunWith(SpringRunner.class)
 public class CustomerServiceUnitTest {
@@ -84,16 +84,24 @@ public class CustomerServiceUnitTest {
 	}
 
 	@Test
-	public void getCustomersTest() {
+	public void getAllCustomersTest() {
 		Mockito.when(custRepo.findAll()).thenReturn(customers);
-		assertEquals(customers, service.readCustomers());
+		assertEquals(customers, service.getAllCustomers());
 
 		verify(this.custRepo, times(1)).findAll();
+	}
+	
+	@Test
+	public void getOneCustomerTest() {
+		Mockito.when(custRepo.getOne(1L)).thenReturn(cust1);
+		assertEquals(customers.get(0), service.getOneCustomer(1L));
+
+		verify(this.custRepo, times(1)).getOne(1L);
 	}
 
 	@Test
 	public void deleteCustomerTest() {
-
+		Mockito.when(custRepo.getOne(1L)).thenReturn(cust1);
 		this.service.deleteCustomer(1L);
 
 		verify(this.custRepo, times(1)).deleteById(1L);
@@ -101,6 +109,7 @@ public class CustomerServiceUnitTest {
 
 	@Test
 	public void deleteAllTest() {
+		Mockito.when(custRepo.findAll()).thenReturn(customers);
 		this.service.deleteAll();
 
 		verify(this.custRepo, times(1)).deleteAll();
@@ -124,5 +133,21 @@ public class CustomerServiceUnitTest {
 		Mockito.when(custRepo.findById(2L)).thenReturn(Optional.of(cust2));
 		assertEquals(60, this.service.custEquipCost(2L));
 	}
+	
+//	@Test
+//	public void rentEquipTest() {
+//		List<String> equipTypesTest = new ArrayList<>();
+//		equipTypesTest.add("kayak");
+//		Mockito.when(custRepo.findById(1L)).thenReturn(Optional.of(cust1));
+//		Mockito.when(custRepo.findAll()).thenReturn(customers);
+//		Mockito.when(equipRepo.findAll()).thenReturn(equipList);
+//		Mockito.when(custRepo.save(cust1)).thenReturn(cust1);
+//		service.rentEquip(1L, equipTypesTest);
+//		
+//		System.out.println(cust1);
+//		
+////		assertEquals(cust1.)
+//		
+//	}
 
 }
