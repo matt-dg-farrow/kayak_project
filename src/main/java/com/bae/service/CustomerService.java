@@ -9,12 +9,13 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Service;
 
-import com.bae.CapacityReachedException;
-import com.bae.EquipmentUnavailableException;
 import com.bae.persistence.domain.Customer;
 import com.bae.persistence.domain.Equipment;
 import com.bae.persistence.repo.CustomerRepo;
 import com.bae.persistence.repo.EquipmentRepo;
+import com.bae.utilities.CapacityReachedException;
+import com.bae.utilities.CustomerNotFoundException;
+import com.bae.utilities.EquipmentUnavailableException;
 
 @Service
 public class CustomerService {
@@ -32,7 +33,7 @@ public class CustomerService {
 	public void customerSetEquip(Customer customer) {
 		if (customer.getEquipment() != null) {
 			customer.setEquipment(customer.getEquipment().stream()
-					.map(equip -> equipRepo.findById(equip.getId()).orElseThrow(EntityNotFoundException::new))
+					.map(equip -> equipRepo.findById(equip.getId()).orElseThrow(CustomerNotFoundException::new))
 					.collect(Collectors.toList()));
 		} else {
 			customer.setEquipment(null);
@@ -49,7 +50,7 @@ public class CustomerService {
 	}
 
 	public int custEquipCost(Long id) {
-		Customer cust = this.custRepo.findById(id).orElseThrow(EntityNotFoundException::new);
+		Customer cust = this.custRepo.findById(id).orElseThrow(CustomerNotFoundException::new);
 		if (cust.getEquipment() != null) {
 			return cust.getEquipment().stream().map(equip -> equip.getPrice()).reduce((acc, next) -> (acc + next))
 					.orElse(0);
@@ -109,7 +110,7 @@ public class CustomerService {
 	}
 
 	public void rentEquip(Long custID, List<String> equipTypes) {
-		Customer cust = this.custRepo.findById(custID).orElseThrow(EntityNotFoundException::new);
+		Customer cust = this.custRepo.findById(custID).orElseThrow(CustomerNotFoundException::new);
 
 		List<Equipment> bookedEquip = new ArrayList<>();
 		Stream.of(this.getAllCustomers()).flatMap(c -> c.stream()).map(Customer::getEquipment).forEach(bookedEquip::addAll);
@@ -117,7 +118,7 @@ public class CustomerService {
 		List<Equipment> availableEquip = this.equipRepo.findAll().stream().filter(e -> !bookedEquip.contains(e))
 				.collect(Collectors.toList());
 		
-		List<Equipment>  custNewEquip = equipTypes.stream().map(t -> findAvailable(t, availableEquip)).collect(Collectors.toList());
+		List<Equipment> custNewEquip = equipTypes.stream().map(t -> findAvailable(t, availableEquip)).collect(Collectors.toList());
 
 		cust.setEquipment(custNewEquip);
 		
@@ -140,7 +141,9 @@ public class CustomerService {
 		
 		for (Equipment equip : availableEquip) {
 			String equipType = equip.getEquipType();
+			
 			switch (equipType) {
+			
 			case "kayak":
 				kayakStock++;
 				break;

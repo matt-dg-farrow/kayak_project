@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bae.CapacityReachedException;
 import com.bae.persistence.domain.Customer;
 import com.bae.service.CustomerService;
+import com.bae.utilities.CapacityReachedException;
 
 @RestController
 @CrossOrigin

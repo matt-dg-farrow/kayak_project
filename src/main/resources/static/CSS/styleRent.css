@@ -71,6 +71,10 @@ td th {
     display:flex;
 } */
 
+#equip-rent {
+    padding-left: 5rem;
+}
+
 #rent-checkboxes {
     margin-left: 2rem;
 }

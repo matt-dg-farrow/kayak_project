@@ -1,6 +1,6 @@
 const equipmentData =
-  axios.get("http://localhost:8080/getEquipment")
-  // axios.get("/KayakProject/getEquipment")
+  // axios.get("http://localhost:8080/getEquipment")
+  axios.get("/KayakProject/getEquipment")
   .then((response) => {
     console.log(response.data);
     return response.data;
@@ -12,8 +12,8 @@ const equipmentData =
 
 
 const customerData =
-  axios.get("http://localhost:8080/getAllCustomers")
-  // axios.get("/KayakProject/getAllCustomers")
+  // axios.get("http://localhost:8080/getAllCustomers")
+  axios.get("/KayakProject/getAllCustomers")
   .then((response) => {
     console.log(response.data);
     return response.data;
@@ -77,8 +77,8 @@ function getCustomerInfo() {
 
 function getCapacity() {
   let circle = document.getElementById("safety-circle");
-  axios.get("http://localhost:8080/getCapacity")
-    // axios.get("/KayakProject/getCapacity")
+  // axios.get("http://localhost:8080/getCapacity")
+  axios.get("/KayakProject/getCapacity")
     .then((response) => {
       console.log(response.data);
       capacityText.innerHTML = response.data + "/300";
@@ -148,28 +148,36 @@ function setPrice() {
 //       })
 
 function addEquipmentToCust() {
-  let custData = document.getElementsByClassName("selected")[0].childNodes;
-  let equipList = document.getElementsByClassName("form-check-input");
-  let equipToBeSaved = [];
-  for (let i = 0; i < equipList.length; i++) {
-    if (equipList[i].checked) {
-      equipToBeSaved.push(equipList[i].id);
+  try {
+    let custData = document.getElementsByClassName("selected")[0].childNodes;
+    let equipList = document.getElementsByClassName("form-check-input");
+    let equipToBeSaved = [];
+    for (let i = 0; i < equipList.length; i++) {
+      if (equipList[i].checked) {
+        equipToBeSaved.push(equipList[i].id);
+      }
     }
+    console.log(equipToBeSaved);
+    // axios.patch("http://localhost:8080/rentEquip/" + custData[0].innerHTML, equipToBeSaved)
+    axios.patch("/KayakProject/rentEquip/" + custData[0].innerHTML, equipToBeSaved)
+      .then(response => {
+        console.log(response);
+        alert("Customer " + custData[1].innerHTML + " " + custData[2].innerHTML + "'s equipment saved.");
+        location.reload();
+      })
+      .catch((error) => {
+        console.log(error.response)
+        alert("There is no more equipment left of that type.")
+      });
+  } catch (error) {
+    alert("There was a problem saving, has a customer been selected?");
   }
-  console.log(equipToBeSaved);
-  axios.patch("http://localhost:8080/rentEquip/" + custData[0].innerHTML, equipToBeSaved)
-    // axios.patch("/KayakProject/rentEquip/" + custData[0].innerHTML, equipToBeSaved)
-    .then(response => {
-      console.log(response);
-      alert("Customer " + custData[1].innerHTML + " " + custData[2].innerHTML + "'s equipment saved.");
-      location.reload();
-    });
 }
 
 function setStock() {
   let equipmentStock = document.getElementsByClassName("stock-number");
-  axios.get("http://localhost:8080/getStock")
-    // axios.get("/KayakProject/getStock")
+  // axios.get("http://localhost:8080/getStock")
+  axios.get("/KayakProject/getStock")
     .then(response => {
       console.log(response);
       equipmentStock[0].innerHTML = response.data[0];
@@ -213,8 +221,8 @@ function addCustomer() {
   }
   if (failure != 1) {
     if (capacityText.innerText != "300/300") {
-      axios.post("http://localhost:8080/createCustomer", {
-        // axios.post('/KayakProject/createCustomer', {
+      // axios.post("http://localhost:8080/createCustomer", {
+      axios.post('/KayakProject/createCustomer', {
         custFirstName: newCustFirstName,
         custSurname: newCustSurname,
         emergFirstName: newEmergFirstName,
@@ -236,23 +244,27 @@ function addCustomer() {
 
 
 function deleteCustomer() {
-  let id = document.getElementsByClassName("selected")[0].childNodes[0].innerHTML;
-  if (confirm("Are you sure you want to delete this customer?")) {
-    axios.delete("http://localhost:8080/deleteCustomer/" + id)
-      // axios.delete("/KayakProject/deleteCustomer/" + id)
-      .then(response => {
-        console.log(response);
-        location.reload();
-        alert("Customer deleted.");
-        setStock();
-      })
-  } else {}
+  try {
+    let id = document.getElementsByClassName("selected")[0].childNodes[0].innerHTML;
+    if (confirm("Are you sure you want to delete this customer?")) {
+      // axios.delete("http://localhost:8080/deleteCustomer/" + id)
+      axios.delete("/KayakProject/deleteCustomer/" + id)
+        .then(response => {
+          console.log(response);
+          location.reload();
+          alert("Customer deleted.");
+          setStock();
+        })
+    } else {}
+  } catch (error) {
+    alert("Could not delete a customer, has a customer been selected?")
+  }
 }
 
 function deleteAll() {
   if (confirm("Are you sure you want to delete all customers?")) {
-    axios.delete("http://localhost:8080/deleteAllCustomers")
-      // axios.delete("/KayakProject/deleteAllCustomers")
+    // axios.delete("http://localhost:8080/deleteAllCustomers")
+    axios.delete("/KayakProject/deleteAllCustomers")
       .then(response => {
         console.log(response);
         location.reload();

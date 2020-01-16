@@ -15,10 +15,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.bae.CapacityReachedException;
 import com.bae.persistence.domain.Customer;
 import com.bae.rest.CustomerController;
 import com.bae.service.CustomerService;
+import com.bae.utilities.CapacityReachedException;
 
 @RunWith(SpringRunner.class)
 public class CustControllerTest {
