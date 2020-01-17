@@ -73,14 +73,34 @@ public class CustomerPOM {
 		Thread.sleep(2000);
 		assertEquals("1/300",  homePage.getCapacity());
 		homePage.moveToRentPage();
+		
+		Thread.sleep(1000);
 		rentPage.searchCustomer("Smith");
 		rentPage.selectCustomer();
 		rentPage.pickAllEquipment();
 		assertEquals("Total Price: £125.00", rentPage.getTotalPrice());
-		rentPage.saveEquipment();
-		Thread.sleep(2000);
-		assertEquals("Customer Bill Smith's equipment saved.", rentPage.readAlertText());
-		
+//		rentPage.saveEquipment();
+//		Thread.sleep(2000);
+//		assertEquals("Customer Bill Smith's equipment saved.", rentPage.readAlertText());
+//		rentPage.alertOK();
+//		assertEquals("19", rentPage.getKayakStock());
+//		assertEquals("19", rentPage.getBAStock());
+//		assertEquals("19", rentPage.getHelmetStock());
+//		assertEquals("19", rentPage.getPaddleStock());
+//		rentPage.moveToHomePage();
+//		
+//		Thread.sleep(1000);
+//		homePage.searchCustomer("Smith");
+//		homePage.selectCustomer();
+//		homePage.deleteOneCustomer();
+//		Thread.sleep(2000);
+//		homePage.alertOK();
+//		assertEquals("Customer deleted.", homePage.readAlertText());
+//		homePage.createTenCustomers(custInfo);
+//		homePage.deleteAllCustomers();
+//		homePage.alertOK();
+//		assertEquals("All customers deleted.", homePage.readAlertText());
+//		
 
 //		laPage.search("dress");
 //		Thread.sleep(3000);

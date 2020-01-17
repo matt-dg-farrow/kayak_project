@@ -33,7 +33,7 @@ public class Page {
 	@FindBy(className = "emergRelation")
 	private WebElement emergRelationTableCell;
 	
-	@FindBy(className = "search-box")
+	@FindBy(id = "search-box")
 	private WebElement searchBox;
 	
 	public Page(WebDriver driver) {
@@ -70,6 +70,7 @@ public class Page {
 	}
 	
 	public void searchCustomer(String surname) {
+		searchBox.click();
 		searchBox.sendKeys(surname);
 	}
 	

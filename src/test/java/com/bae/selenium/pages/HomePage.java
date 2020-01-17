@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties.Lettuce;
 
 
 public class HomePage extends Page {
@@ -78,6 +79,14 @@ public class HomePage extends Page {
 		
 		public WebElement getCapacity() {
 			return capacity;
+		}
+
+		public void createTenCustomers(List<String> custInfo) throws InterruptedException {
+			for	(int i = 0; i < 10; i++) {
+				createCustomer(custInfo);
+				Thread.sleep(500);
+				alertOK();
+			}
 		}
 		
 //		public void search(String searchText) {
