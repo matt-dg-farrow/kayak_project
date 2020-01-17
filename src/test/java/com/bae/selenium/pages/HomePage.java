@@ -104,7 +104,7 @@ public class HomePage extends Page {
 		}
 		
 		public String getSafetyCircleColour() {
-			return safetyCircle.getCssValue("color");
+			return safetyCircle.getCssValue("background-color");
 		}
 		
 }

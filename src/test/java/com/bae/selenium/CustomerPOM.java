@@ -66,49 +66,56 @@ public class CustomerPOM {
 		
 	
 		
-//		homePage.createCustomer(custInfo);
-//		Thread.sleep(2000);
-//		assertEquals("Customer created.", homePage.readAlertText());
-//		homePage.alertOK();
-//		Thread.sleep(2000);
-//		assertEquals("1/300",  homePage.getCapacity());
-//		homePage.moveToRentPage();
-//		
-//		Thread.sleep(1000);
-//		rentPage.searchCustomer("Smith");
-//		rentPage.selectCustomer();
-//		rentPage.pickAllEquipment();
-//		assertEquals("Total Price: £125.00", rentPage.getTotalPrice());
-//		rentPage.saveEquipment();
-//		Thread.sleep(2000);
-//		assertEquals("Customer Bill Smith's equipment saved.", rentPage.readAlertText());
-//		rentPage.alertOK();
-//		assertEquals("19", rentPage.getKayakStock());
-//		assertEquals("19", rentPage.getBAStock());
-//		assertEquals("19", rentPage.getHelmetStock());
-//		assertEquals("19", rentPage.getPaddleStock());
-//		rentPage.moveToHomePage();
-//		
-//		Thread.sleep(1000);
-//		homePage.searchCustomer("Smith");
-//		homePage.selectCustomer();
-//		homePage.deleteOneCustomer();
-//		Thread.sleep(2000);
-//		homePage.alertOK();
-//		Thread.sleep(500);
-//		assertEquals("Customer deleted.", homePage.readAlertText());
-//		homePage.alertOK();
-//		homePage.createTenCustomers(custInfo);
-//		homePage.deleteAllCustomers();
-//		homePage.alertOK();
-//		Thread.sleep(500);
-////		assertEquals("All customers deleted.", homePage.readAlertText());
-		assertEquals("rgba(33, 37, 41, 1)", homePage.getSafetyCircleColour());
+		homePage.createCustomer(custInfo);
+		Thread.sleep(2000);
+		assertEquals("Customer created.", homePage.readAlertText());
+		homePage.alertOK();
+		Thread.sleep(2000);
+		assertEquals("1/300",  homePage.getCapacity());
+		homePage.moveToRentPage();
+		
+		Thread.sleep(1000);
+		rentPage.searchCustomer("Smith");
+		rentPage.selectCustomer();
+		rentPage.pickAllEquipment();
+		assertEquals("Total Price: £125.00", rentPage.getTotalPrice());
+		rentPage.saveEquipment();
+		Thread.sleep(2000);
+		assertEquals("Customer Bill Smith's equipment saved.", rentPage.readAlertText());
+		rentPage.alertOK();
+		assertEquals("19", rentPage.getKayakStock());
+		assertEquals("19", rentPage.getBAStock());
+		assertEquals("19", rentPage.getHelmetStock());
+		assertEquals("19", rentPage.getPaddleStock());
+		rentPage.moveToHomePage();
+		
+		Thread.sleep(1000);
+		homePage.searchCustomer("Smith");
+		homePage.selectCustomer();
+		homePage.deleteOneCustomer();
+		Thread.sleep(2000);
+		homePage.alertOK();
+		Thread.sleep(500);
+		assertEquals("Customer deleted.", homePage.readAlertText());
+		homePage.alertOK();
+		homePage.createTenCustomers(custInfo);
+		homePage.deleteAllCustomers();
+		homePage.alertOK();
+		Thread.sleep(500);
+		assertEquals("All customers deleted.", homePage.readAlertText());
+		homePage.alertOK();
+		assertEquals("rgba(0, 255, 0, 1)", homePage.getSafetyCircleColour());
 		homePage.create150Customers(custInfo);
+		homePage.createCustomer(custInfo);
+		Thread.sleep(1000);
+		homePage.alertOK();
+		Thread.sleep(1000);
 		assertEquals("rgba(255, 165, 0, 1)", homePage.getSafetyCircleColour());
 		homePage.create100Customers(custInfo);
+		Thread.sleep(1000);
 		assertEquals("rgba(255, 0, 0, 1)", homePage.getSafetyCircleColour());
-		
+		homePage.deleteAllCustomers();
+		homePage.alertOK();
 	}
 
 }
