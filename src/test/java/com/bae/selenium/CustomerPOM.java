@@ -66,19 +66,19 @@ public class CustomerPOM {
 		
 	
 		
-		homePage.createCustomer(custInfo);
-		Thread.sleep(2000);
-		assertEquals("Customer created.", homePage.readAlertText());
-		homePage.alertOK();
-		Thread.sleep(2000);
-		assertEquals("1/300",  homePage.getCapacity());
-		homePage.moveToRentPage();
-		
-		Thread.sleep(1000);
-		rentPage.searchCustomer("Smith");
-		rentPage.selectCustomer();
-		rentPage.pickAllEquipment();
-		assertEquals("Total Price: £125.00", rentPage.getTotalPrice());
+//		homePage.createCustomer(custInfo);
+//		Thread.sleep(2000);
+//		assertEquals("Customer created.", homePage.readAlertText());
+//		homePage.alertOK();
+//		Thread.sleep(2000);
+//		assertEquals("1/300",  homePage.getCapacity());
+//		homePage.moveToRentPage();
+//		
+//		Thread.sleep(1000);
+//		rentPage.searchCustomer("Smith");
+//		rentPage.selectCustomer();
+//		rentPage.pickAllEquipment();
+//		assertEquals("Total Price: £125.00", rentPage.getTotalPrice());
 //		rentPage.saveEquipment();
 //		Thread.sleep(2000);
 //		assertEquals("Customer Bill Smith's equipment saved.", rentPage.readAlertText());
@@ -95,72 +95,19 @@ public class CustomerPOM {
 //		homePage.deleteOneCustomer();
 //		Thread.sleep(2000);
 //		homePage.alertOK();
+//		Thread.sleep(500);
 //		assertEquals("Customer deleted.", homePage.readAlertText());
+//		homePage.alertOK();
 //		homePage.createTenCustomers(custInfo);
 //		homePage.deleteAllCustomers();
 //		homePage.alertOK();
-//		assertEquals("All customers deleted.", homePage.readAlertText());
-//		
-
-//		laPage.search("dress");
-//		Thread.sleep(3000);
-//
-//		laPage.pickDress();
-//		Thread.sleep(3000);
-//
-//		itemPage.addToCart();
-//		Thread.sleep(3000);
-//
-//		itemPage.checkout();
-//		Thread.sleep(3000);
-//		
-//		checkPage.proceed();
-//		Thread.sleep(3000);
-//		
-//		checkPage.signIn();
-//		Thread.sleep(3000);
-//		
-//		checkPage.proceedAgain();
-//		Thread.sleep(3000);
-//		
-//		checkPage.checkBox();
-//		checkPage.proceedAgainAgain();
-//		Thread.sleep(3000);
-//		
-//		checkPage.payment();
-//		Thread.sleep(3000);
-//		
-//		checkPage.confirm();
-//		Thread.sleep(3000);
-//		
-//		assertEquals("Your order on My Store is complete.", checkPage.confirmMessage());
-//		
-//		Thread.sleep(12000);
-		
-		
-		
-		
-//		assertEquals("Printed Summer Dress",
-//				this.driver
-//						.findElement(
-//								By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[1]/h2"))
-//						.getText());
-		
-
-//		
-//		Thread.sleep(6000);
-//		
-//		SearchPage sePage = new SearchPage(driver);
-//		
-//		String searched = sePage.searchedText();
-//		
-//		assertEquals( arg, searched);
-//		Thread.sleep(3000);
-
-	}
-
-	private void assertEquals(String expected, Object readAlertText) {
-		// TODO Auto-generated method stub
+//		Thread.sleep(500);
+////		assertEquals("All customers deleted.", homePage.readAlertText());
+		assertEquals("rgba(33, 37, 41, 1)", homePage.getSafetyCircleColour());
+		homePage.create150Customers(custInfo);
+		assertEquals("rgba(255, 165, 0, 1)", homePage.getSafetyCircleColour());
+		homePage.create100Customers(custInfo);
+		assertEquals("rgba(255, 0, 0, 1)", homePage.getSafetyCircleColour());
 		
 	}
 

@@ -33,16 +33,16 @@ public class RentPage extends Page {
 		@FindBy(id = "total-price")
 		private WebElement totalPrice;
 
-		@FindBy(id="kayak-stock")
+		@FindBy(id="kayak-stock-number")
 		private WebElement kayakStock;
 		
-		@FindBy(id="BA-stock")
+		@FindBy(id="BA-stock-number")
 		private WebElement BAStock;
 		
-		@FindBy(id="helmet-stock")
+		@FindBy(id="helmet-stock-number")
 		private WebElement helmetStock;
 		
-		@FindBy(id="paddle-stock")
+		@FindBy(id="paddle-stock-number")
 		private WebElement paddleStock;
 		
 		
@@ -52,24 +52,24 @@ public class RentPage extends Page {
 			PageFactory.initElements(driver, this);
 		}
 		
-		public WebElement getTotalPrice() {
-			return totalPrice;
+		public String getTotalPrice() {
+			return totalPrice.getText();
 		}
 
-		public WebElement getKayakStock() {
-			return kayakStock;
+		public String getKayakStock() {
+			return kayakStock.getText();
 		}
 
-		public WebElement getBAStock() {
-			return BAStock;
+		public String getBAStock() {
+			return BAStock.getText();
 		}
 
-		public WebElement getHelmetStock() {
-			return helmetStock;
+		public String getHelmetStock() {
+			return helmetStock.getText();
 		}
 
-		public WebElement getPaddleStock() {
-			return paddleStock;
+		public String getPaddleStock() {
+			return paddleStock.getText();
 		}
 		
 		public void pickAllEquipment() {
@@ -82,28 +82,4 @@ public class RentPage extends Page {
 		public void saveEquipment() {
 			saveButton.click();
 		}
-		
-		
-		
-		
-		
-		
-//		public void search(String searchText) {
-//			searchbar.sendKeys(searchText);
-//			searchbar.submit();
-//		}
-//		
-//		public void pickDress() {
-//			dressImage.click();
-//		}
-//		
-//		public void addToCart() {
-//			cartButton.click();
-//		}
-//		
-//		public void checkout() {
-//			checkoutButton.click();
-//		}
-
-
 }

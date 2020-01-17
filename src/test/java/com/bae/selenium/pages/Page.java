@@ -9,16 +9,16 @@ public class Page {
 	
 	private WebDriver driver;
 	
-	@FindBy(className = "home-link")
+	@FindBy(id = "home-link")
 	private WebElement homeLink;
 	
 	@FindBy(id = "rent-link")
 	private WebElement rentLink;
 	
-	@FindBy(className = "custFirstName")
+	@FindBy(className = "customerFirstName")
 	private WebElement custFirstNameTableCell;
 	
-	@FindBy(className = "custSurname")
+	@FindBy(className = "customerSurname")
 	private WebElement custSurnameTableCell;
 	
 	@FindBy(className = "emergFirstName")
