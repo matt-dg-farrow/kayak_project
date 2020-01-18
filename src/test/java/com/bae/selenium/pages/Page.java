@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Page {
 	
-	private WebDriver driver;
+	protected WebDriver driver;
 	
 	@FindBy(id = "home-link")
 	private WebElement homeLink;

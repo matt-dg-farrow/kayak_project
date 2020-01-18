@@ -1,8 +1,9 @@
 package com.bae.serviceTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class CustomerServiceUnitTest {
 
 	private Customer cust1;
 	private Customer cust2;
-	private Equipment equip1 = new Equipment("Kayak", 60);
+	private Equipment equip1;
 	private List<Equipment> equipList;
 	private List<Customer> customers;
 
@@ -47,10 +48,13 @@ public class CustomerServiceUnitTest {
 		this.cust1 = new Customer("Bill", "Billy", "Bob", "Bobby", "07779111222", "Brother");
 		this.cust2 = new Customer("Sue", "Bills", "Steve", "Billington", "07742333444", "Father");
 		this.cust2.setId(2L);
+		this.equip1 = new Equipment("kayak", 60);
 		this.equip1.setId(1L);
 		this.equipList.add(equip1);
 		this.cust2.setEquipment(equipList);
 		customers.add(cust1);
+	
+		
 	}
 
 	@Test
@@ -118,7 +122,9 @@ public class CustomerServiceUnitTest {
 	@Test
 	public void capacityTest() {
 		Mockito.when(custRepo.count()).thenReturn(Long.valueOf(customers.size()));
-		assertEquals(1, this.service.capacity());
+		
+		
+		assertEquals(1, (long) this.service.capacity());
 	}
 	
 	@Test
@@ -134,20 +140,37 @@ public class CustomerServiceUnitTest {
 		assertEquals(60, this.service.custEquipCost(2L));
 	}
 	
-//	@Test
-//	public void rentEquipTest() {
-//		List<String> equipTypesTest = new ArrayList<>();
-//		equipTypesTest.add("kayak");
-//		Mockito.when(custRepo.findById(1L)).thenReturn(Optional.of(cust1));
-//		Mockito.when(custRepo.findAll()).thenReturn(customers);
-//		Mockito.when(equipRepo.findAll()).thenReturn(equipList);
-//		Mockito.when(custRepo.save(cust1)).thenReturn(cust1);
-//		service.rentEquip(1L, equipTypesTest);
-//		
-//		System.out.println(cust1);
-//		
-////		assertEquals(cust1.)
-//		
-//	}
+	@Test
+	public void rentEquipTest() {
+		List<String> equipTypesTest = new ArrayList<>();
+		equipTypesTest.add("kayak");
+		
+		System.out.println(equipList.get(0).getEquipType());
+		Mockito.when(custRepo.findById(1L)).thenReturn(Optional.of(cust1));
+		Mockito.when(equipRepo.findAll()).thenReturn(equipList);
+		Mockito.when(custRepo.save(cust1)).thenReturn(cust1);
+				
+		assertEquals(cust1, service.rentEquip(1L, equipTypesTest));
+		
+	}
+	
+	@Test
+	public void getStockTest() {
+		List<Integer> testListOfInts = new ArrayList<>();
+		testListOfInts.add(1);
+		testListOfInts.add(1);
+		testListOfInts.add(1);
+		testListOfInts.add(1);
+		Equipment equip2 = new Equipment("helmet", 15);
+		Equipment equip3 = new Equipment("BA", 30);
+		Equipment equip4 = new Equipment("paddle", 20);
+		equipList.add(equip2);
+		equipList.add(equip3);
+		equipList.add(equip4);
+		
+		Mockito.when(equipRepo.findAll()).thenReturn(equipList);
+		
+		assertEquals(testListOfInts, service.getStock());
+	}
 
 }

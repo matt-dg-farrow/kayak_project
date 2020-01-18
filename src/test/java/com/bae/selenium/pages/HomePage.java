@@ -4,11 +4,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties.Lettuce;
 
 
@@ -84,9 +87,11 @@ public class HomePage extends Page {
 		}
 
 		public void createTenCustomers(List<String> custInfo) throws InterruptedException {
+			WebDriverWait wait = new WebDriverWait(driver,30);
+
 			for	(int i = 0; i < 10; i++) {
 				createCustomer(custInfo);
-				Thread.sleep(500);
+				wait.until(ExpectedConditions.alertIsPresent());
 				alertOK();
 			}
 		}

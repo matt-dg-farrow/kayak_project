@@ -107,7 +107,7 @@ public class CustomerService {
 		throw new EquipmentUnavailableException("No more " + type + "s are available");
 	}
 
-	public void rentEquip(Long custID, List<String> equipTypes) {
+	public Customer rentEquip(Long custID, List<String> equipTypes) {
 		Customer cust = this.custRepo.findById(custID).orElseThrow(CustomerNotFoundException::new);
 
 		List<Equipment> bookedEquip = new ArrayList<>();
@@ -120,7 +120,7 @@ public class CustomerService {
 
 		cust.setEquipment(custNewEquip);
 		
-		this.custRepo.save(cust);
+		return this.custRepo.save(cust);
 	}
 	
 	public List<Integer> getStock() {
