@@ -71,7 +71,6 @@ public class SeleniumTest {
 
 	@Test
 	public void seleniumTest() throws InterruptedException {
-//		driver.manage().window().maximize();
 		this.driver.get("http://localhost:"+ port + context);
 		
 		WebDriverWait wait = new WebDriverWait(driver,30);
@@ -85,7 +84,7 @@ public class SeleniumTest {
 		
 		wait.until(ExpectedConditions.textToBe(By.id("capacity"), "1/300"));
 		assertEquals("1/300",  homePage.getCapacity());
-		homePage.moveToRentPage();
+		driver.get("http://localhost:"+ port + context + "/rent.html");
 		
 		
 		rentPage.searchCustomer("Smith");
@@ -105,7 +104,7 @@ public class SeleniumTest {
 		assertEquals("19", rentPage.getPaddleStock());
 		
 		
-		rentPage.moveToHomePage();
+		driver.get("http://localhost:"+ port + context + "/index.html");
 		
 		
 		homePage.searchCustomer("Smith");
