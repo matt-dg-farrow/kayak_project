@@ -7,13 +7,16 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -24,11 +27,15 @@ import com.bae.selenium.pages.RentPage;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CustomerPOM {
+public class SeleniumTest {
 
 	
 	@LocalServerPort
 	private int port;
+	
+	@Value("${server.servlet.context-path}")
+	private String context;
+	
 	private WebDriver driver;
 
 	private List<String> custInfo = new ArrayList<>();
@@ -40,7 +47,7 @@ public class CustomerPOM {
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "chromedriver");
 		ChromeOptions options = new ChromeOptions();
-//		options.setHeadless(true);
+		options.setHeadless(true);
 		this.driver = new ChromeDriver(options);
 		this.driver.manage().window().maximize();
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -58,90 +65,75 @@ public class CustomerPOM {
 	public void teardown() {
 		driver.quit();
 	}
+	
+	private String address = "localhost";
+//			"3.9.36.142";
 
 	@Test
 	public void seleniumTest() throws InterruptedException {
-//		driver.manage().window().maximize();
-		this.driver.get("http://3.9.36.142:8181/KayakProject/index.html");
+		this.driver.get("http://localhost:"+ port + context);
 		
-	
+		WebDriverWait wait = new WebDriverWait(driver,30);
+
 		
 		homePage.createCustomer(custInfo);
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.alertIsPresent());
 		assertEquals("Customer created.", homePage.readAlertText());
 		homePage.alertOK();
-		Thread.sleep(2000);
+		
+		
+		wait.until(ExpectedConditions.textToBe(By.id("capacity"), "1/300"));
 		assertEquals("1/300",  homePage.getCapacity());
-		homePage.moveToRentPage();
+		driver.get("http://localhost:"+ port + context + "/rent.html");
+		
+		
 		rentPage.searchCustomer("Smith");
 		rentPage.selectCustomer();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("kayak")));
 		rentPage.pickAllEquipment();
+		wait.until(ExpectedConditions.textToBe(By.id("total-price"), "Total Price: £125.00"));
 		assertEquals("Total Price: £125.00", rentPage.getTotalPrice());
+		
 		rentPage.saveEquipment();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.alertIsPresent());
 		assertEquals("Customer Bill Smith's equipment saved.", rentPage.readAlertText());
-		
-
-//		laPage.search("dress");
-//		Thread.sleep(3000);
-//
-//		laPage.pickDress();
-//		Thread.sleep(3000);
-//
-//		itemPage.addToCart();
-//		Thread.sleep(3000);
-//
-//		itemPage.checkout();
-//		Thread.sleep(3000);
-//		
-//		checkPage.proceed();
-//		Thread.sleep(3000);
-//		
-//		checkPage.signIn();
-//		Thread.sleep(3000);
-//		
-//		checkPage.proceedAgain();
-//		Thread.sleep(3000);
-//		
-//		checkPage.checkBox();
-//		checkPage.proceedAgainAgain();
-//		Thread.sleep(3000);
-//		
-//		checkPage.payment();
-//		Thread.sleep(3000);
-//		
-//		checkPage.confirm();
-//		Thread.sleep(3000);
-//		
-//		assertEquals("Your order on My Store is complete.", checkPage.confirmMessage());
-//		
-//		Thread.sleep(12000);
+		rentPage.alertOK();
+		assertEquals("19", rentPage.getKayakStock());
+		assertEquals("19", rentPage.getBAStock());
+		assertEquals("19", rentPage.getHelmetStock());
+		assertEquals("19", rentPage.getPaddleStock());
 		
 		
+		driver.get("http://localhost:"+ port + context + "/index.html");
 		
 		
-//		assertEquals("Printed Summer Dress",
-//				this.driver
-//						.findElement(
-//								By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[1]/h2"))
-//						.getText());
+		homePage.searchCustomer("Smith");
+		homePage.selectCustomer();
 		
-
-//		
-//		Thread.sleep(6000);
-//		
-//		SearchPage sePage = new SearchPage(driver);
-//		
-//		String searched = sePage.searchedText();
-//		
-//		assertEquals( arg, searched);
-//		Thread.sleep(3000);
-
-	}
-
-	private void assertEquals(String expected, Object readAlertText) {
-		// TODO Auto-generated method stub
+		homePage.deleteOneCustomer();
+		wait.until(ExpectedConditions.alertIsPresent());
+		homePage.alertOK();
+		wait.until(ExpectedConditions.alertIsPresent());
+		assertEquals("Customer deleted.", homePage.readAlertText());
+		homePage.alertOK();
 		
+		homePage.createTenCustomers(custInfo);
+		homePage.deleteAllCustomers();
+		wait.until(ExpectedConditions.alertIsPresent());
+		homePage.alertOK();
+		wait.until(ExpectedConditions.alertIsPresent());
+		assertEquals("All customers deleted.", homePage.readAlertText());
+		homePage.alertOK();
+		assertEquals("rgba(0, 255, 0, 1)", homePage.getSafetyCircleColour());
+		
+		homePage.create150Customers(custInfo);
+		assertEquals("rgba(255, 165, 0, 1)", homePage.getSafetyCircleColour());
+		
+		homePage.create100Customers(custInfo);
+		assertEquals("rgba(255, 0, 0, 1)", homePage.getSafetyCircleColour());
+		
+		homePage.deleteAllCustomers();
+		homePage.alertOK();
 	}
 
 }

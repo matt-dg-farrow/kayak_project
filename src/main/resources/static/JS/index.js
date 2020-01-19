@@ -88,7 +88,7 @@ function getCapacity() {
     .then((response) => {
       console.log(response.data);
       capacityText.innerHTML = response.data + "/300";
-      if (response.data >= 150) {
+      if (response.data >= 150 && response.data <= 250) {
         circle.className = "dot-orange";
       }
       if (response.data >= 250) {

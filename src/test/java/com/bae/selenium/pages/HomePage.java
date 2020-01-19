@@ -1,12 +1,18 @@
 package com.bae.selenium.pages;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties.Lettuce;
 
 
 public class HomePage extends Page {
@@ -76,26 +82,34 @@ public class HomePage extends Page {
 			removeAll.click();
 		}
 		
-		public WebElement getCapacity() {
-			return capacity;
+		public String getCapacity() {
+			return capacity.getText();
+		}
+
+		public void createTenCustomers(List<String> custInfo) throws InterruptedException {
+			WebDriverWait wait = new WebDriverWait(driver,30);
+
+			for	(int i = 0; i < 10; i++) {
+				createCustomer(custInfo);
+				wait.until(ExpectedConditions.alertIsPresent());
+				alertOK();
+			}
 		}
 		
-//		public void search(String searchText) {
-//			searchbar.sendKeys(searchText);
-//			searchbar.submit();
-//		}
-//		
-//		public void pickDress() {
-//			dressImage.click();
-//		}
-//		
-//		public void addToCart() {
-//			cartButton.click();
-//		}
-//		
-//		public void checkout() {
-//			checkoutButton.click();
-//		}
-
-
+		public void create150Customers(List<String> custInfo) throws InterruptedException {
+			for (int i = 0; i < 15; i++) {
+				createTenCustomers(custInfo);
+			}
+		}
+		
+		public void create100Customers(List<String> custInfo) throws InterruptedException {
+			for (int i = 0; i < 10; i++) {
+				createTenCustomers(custInfo);
+			}
+		}
+		
+		public String getSafetyCircleColour() {
+			return safetyCircle.getCssValue("background-color");
+		}
+		
 }

@@ -7,18 +7,18 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Page {
 	
-	private WebDriver driver;
+	protected WebDriver driver;
 	
-	@FindBy(className = "home-link")
+	@FindBy(id = "home-link")
 	private WebElement homeLink;
 	
 	@FindBy(id = "rent-link")
 	private WebElement rentLink;
 	
-	@FindBy(className = "custFirstName")
+	@FindBy(className = "customerFirstName")
 	private WebElement custFirstNameTableCell;
 	
-	@FindBy(className = "custSurname")
+	@FindBy(className = "customerSurname")
 	private WebElement custSurnameTableCell;
 	
 	@FindBy(className = "emergFirstName")
@@ -33,7 +33,7 @@ public class Page {
 	@FindBy(className = "emergRelation")
 	private WebElement emergRelationTableCell;
 	
-	@FindBy(className = "search-box")
+	@FindBy(id = "search-box")
 	private WebElement searchBox;
 	
 	public Page(WebDriver driver) {
@@ -70,6 +70,7 @@ public class Page {
 	}
 	
 	public void searchCustomer(String surname) {
+		searchBox.click();
 		searchBox.sendKeys(surname);
 	}
 	
