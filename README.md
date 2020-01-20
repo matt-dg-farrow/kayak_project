@@ -49,5 +49,6 @@ NOTE: The appilication is hosted on a AWS EC2 instance, as such the link may not
 * **Build** - Passing 
 * **Test Coverage** - 93% 
 
+If you wish to clone the code, feel free to do so using the below clone url:
 
 `git clone https://github.com/matt-dg-farrow/kayak_project/`
