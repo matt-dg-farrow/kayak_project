@@ -1,0 +1,124 @@
+.navbar-brand {
+    font-size: 29px;
+    margin-left: 1rem;
+}
+
+.nav-item.nav-link {
+    font-size: 19px;
+    padding-top: 18px;
+}
+
+.upper-half-column {
+    float: left;
+    padding-left: 2rem;
+    padding-top: 2rem;
+}
+
+.left.mid {
+    width: 40%;
+}
+
+.right {
+    width: 20%;
+}
+
+#input-fields-RHS {
+    padding-left: 4rem;
+}
+
+#add-button {
+    margin-left: 3rem;
+    margin-top: 5rem;
+    padding: 0.5rem;
+    width: 12rem;
+}
+
+#input-fields:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+#table-of-customers {
+    margin-left: 2rem;
+    /* padding-right: 16rem; */
+    width: 70rem;
+}
+
+.table-header {
+    font-weight: bold;
+    height: 2rem;
+}
+
+.lower-half-column {
+    float: left;
+    padding-top: 2rem;
+}
+
+.table-div {
+    height: 27.5rem;
+    overflow: scroll;
+}
+
+/* .LHS {
+    width: 80%;
+} */
+
+.RHS {
+    width: 20%;
+    text-align: center;
+
+}
+
+.dot-green {
+    height: 125px;
+    width: 125px;
+    background-color: lime;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-orange {
+    height: 125px;
+    width: 125px;
+    background-color: orange;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-red {
+    height: 125px;
+    width: 125px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.selected {
+    background-color: aquamarine;
+}
+
+.hidden {
+    display: none;
+}
+
+#remove-select {
+    padding: 0.5rem;
+    margin: 1rem;
+    width: 12rem;
+}
+
+#remove-all {
+    padding: 0.5rem;
+    margin: 1rem;
+    width: 12rem;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/styleHome.css">
+    <title>Document</title>
+</head>
+
+<body onload="getCustomerInfo(); getCapacity();">
+
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">White Water Centre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a id="home-link" class="nav-item nav-link active" href="#">Home <span
+                            class="sr-only">(current)</span></a>
+                    <a id="rent-link" class="nav-item nav-link" href="rent.html">Rent</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <div id="input-fields">
+        <form action="index.html">
+
+            <div id="input-fields-LHS" class="upper-half-column left">
+                <div>
+                    <h1 class=detail-header>Customer Details:</h1>
+                </div>
+                <div class="input-group mb-3">
+                    <input id="newCustFirstName" type="text" placeholder="First Name">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input id="newCustSurname" type="text" placeholder="Last Name">
+                </div>
+
+            </div>
+
+            <div id="input-fields-RHS" class="upper-half-column mid">
+                <div>
+                    <h1 class=detail-header>Emergency Contact Details:</h1>
+                </div>
+                <div class="input-group mb-3">
+                    <input id="newEmergFirstName" type="text" placeholder="First Name">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input id="newEmergSurname" type="text" placeholder="Last Name">
+                </div>
+                <div class="input-group mb-3">
+                    <input id="newEmergContactNumber" type="text" placeholder="Mobile Number">
+                </div>
+                <div class="input-group mb-3">
+                    <input id="newEmergRelation" type="text" placeholder="Relation to Customer">
+                </div>
+
+            </div>
+
+            <div class="upper-half-column right">
+                <button id="add-button" type="button" class="btn btn-success" onclick="addCustomer();">Add
+                    Customer</button>
+            </div>
+        </form>
+    </div>
+    <hr />
+    <div class="lower-half">
+        <div class="lower-half-column LHS">
+            <div class="table-div">
+                <table id="table-of-customers" class="table table-hover table-bordered">
+                    <thead>
+                        <tr class="table-header">
+                            <th colspan="2">Customer Details</th>
+                            <th colspan="4">Emergency Details</th>
+                        </tr>
+                        <tr class="table-header">
+                            <th id="custFirstName" scope="col">First Name</th>
+                            <th id="custSurname" scope="col">Last Name</th>
+                            <th id="emergFirstName" scope="col">First Name</th>
+                            <th id="emergSurname" scope="col">Last Name</th>
+                            <th id="emergContactNumber" scope="col">Mobile Number</th>
+                            <th id="emergRelation" scope="col">Relation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" onclick="highlight();">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <div class="lower-half-column RHS">
+            <div id="safety-indicator">
+                <span id="safety-circle"></span>
+            </div>
+            <div id="no-of-customers">
+                <h3>Current number of people </br> on the course:</h3>
+                <h3 id="capacity">0/300</h3>
+            </div>
+            <div>
+                <input id="search-box" onkeyup="tableSearch()" placeholder="Search by surname...">
+            </div>
+            <div id="remove-buttons">
+                <button id="remove-select" type="submit" class="btn btn-outline-primary"
+                    onclick="deleteCustomer()">Remove Selected</button>
+                <button id="remove-all" type="submit" class="btn btn-primary" onclick="deleteAll()">Remove All</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="JS/index.js"></script>
+
+
+</html>
