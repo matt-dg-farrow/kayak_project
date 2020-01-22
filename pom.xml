@@ -85,7 +85,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.bae.KayakProjectApplication</mainClass>
+            <mainClass>com.bae.App.java</mainClass>
           </manifest>
         </archive>
       </configuration>
@@ -97,8 +97,10 @@
 						<executable>true</executable>
 					</configuration>
 				</plugin>
+				
 			</plugins>
 		</pluginManagement>
+		
 	</build>
 
 </project>
