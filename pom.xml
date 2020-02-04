@@ -79,18 +79,11 @@
 		</plugins>
 	</build>
 	<distributionManagement>
-		<repository>
-                    <id>snapshots</id>
-                    <name>Internal Nexus Snapshots</name>
-					<url>http://3.11.84.155:8081/repository/mj-hosted/</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-        </repository>
+        <snapshotRepository>
+			<id>nexus</id>
+			<name>mj-hosted</name>
+			<url>http://3.11.84.155:8081/repository/mj-hosted/</url>
+		</snapshotRepository>
 		
 	</distributionManagement>
 
