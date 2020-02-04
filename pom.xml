@@ -79,12 +79,11 @@
 		</plugins>
 	</build>
 	<distributionManagement>
-		<repository>
+		<snapshotRepository>
 			<id>nexus</id>
-			<name>maven-releases</name>
+			<name>maven-snapshots</name>
 			<url>http://3.11.84.155:8081/repository/mj-hosted/</url>
-		</repository>
-
+		</snapshotRepository>
 	</distributionManagement>
 
 </project>
