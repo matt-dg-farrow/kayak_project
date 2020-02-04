@@ -81,7 +81,7 @@
 	<distributionManagement>
         <snapshotRepository>
 			<id>nexus</id>
-			<name>mj-hosted</name>
+			<name>nexus-snapshot</name>
 			<url>http://3.11.84.155:8081/repository/mj-hosted/</url>
 		</snapshotRepository>
 		
