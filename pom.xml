@@ -81,7 +81,7 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>nexus</id>
-			<name>maven-snapshots</name>
+			<name>mj-hosted</name>
 			<url>http://3.11.84.155:8081/repository/mj-hosted/</url>
 		</snapshotRepository>
 	</distributionManagement>
