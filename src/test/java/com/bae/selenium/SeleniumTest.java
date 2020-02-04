@@ -117,20 +117,20 @@
 //		assertEquals("Customer deleted.", homePage.readAlertText());
 //		homePage.alertOK();
 //		
-//		homePage.createTenCustomers(custInfo);
-//		homePage.deleteAllCustomers();
-//		wait.until(ExpectedConditions.alertIsPresent());
-//		homePage.alertOK();
-//		wait.until(ExpectedConditions.alertIsPresent());
-//		assertEquals("All customers deleted.", homePage.readAlertText());
-//		homePage.alertOK();
-//		assertEquals("rgba(0, 255, 0, 1)", homePage.getSafetyCircleColour());
-//		
-//		homePage.create150Customers(custInfo);
-//		assertEquals("rgba(255, 165, 0, 1)", homePage.getSafetyCircleColour());
-//		
-//		homePage.create100Customers(custInfo);
-//		assertEquals("rgba(255, 0, 0, 1)", homePage.getSafetyCircleColour());
+////		homePage.createTenCustomers(custInfo);
+////		homePage.deleteAllCustomers();
+////		wait.until(ExpectedConditions.alertIsPresent());
+////		homePage.alertOK();
+////		wait.until(ExpectedConditions.alertIsPresent());
+////		assertEquals("All customers deleted.", homePage.readAlertText());
+////		homePage.alertOK();
+////		assertEquals("rgba(0, 255, 0, 1)", homePage.getSafetyCircleColour());
+////		
+////		homePage.create150Customers(custInfo);
+////		assertEquals("rgba(255, 165, 0, 1)", homePage.getSafetyCircleColour());
+////		
+////		homePage.create100Customers(custInfo);
+////		assertEquals("rgba(255, 0, 0, 1)", homePage.getSafetyCircleColour());
 //		
 //		homePage.deleteAllCustomers();
 //		homePage.alertOK();
@@ -138,4 +138,4 @@
 //
 //}
 //	
-//
+
