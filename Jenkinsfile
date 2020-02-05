@@ -1,25 +1,25 @@
 pipeline {
     agent any
+    environment {
+    	DOCKER_USER = credentials('docker-login')
+    	}
     stages {
-        stage('---clean---') {
-            steps {
-                sh "mvn clean"
+        stage('--Mvn clean package--') {
+                steps {
+                    sh "mvn clean package deploy"
+                    }
             }
-        }
-        stage('--test--') {
-            steps {
-                sh "mvn test"
+            stage('--Build back-end--') {
+                steps {
+                    sh "docker build -t 9953136/app-matt ."
+                    }
             }
-        }
-        stage('--package--') {
-            steps {
-                sh "mvn package"
-            }
-        }
-        stage('--deploy--') {
-            steps {
-                sh "mvn deploy"
-            }
-        }
+        stage('--Dockerise--') {
+              steps {
+                    withDockerRegistry([ credentialsId: "docker-login", url: "" ]) {
+                    sh "docker push 9953136/app-matt"
+                    }
+              }
+         }
     }
 }
