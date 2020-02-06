@@ -7,6 +7,7 @@ A safety and renting tool to be used by receptionists at whitewater centre.
 * [Technologies](#Technologies)
 * [Usage](#Usage)
 * [Status](#Status)
+* [DevOps](#DevOps)
 
 <a name="Features"></a>
 ## Features:
@@ -52,3 +53,29 @@ NOTE: The appilication is hosted on a AWS EC2 instance, as such the link may not
 If you wish to clone the code, feel free to do so using the below clone url:
 
 `git clone https://github.com/matt-dg-farrow/kayak_project/`
+
+<a name="DevOps"></a>
+# DevOps Project
+Matthew Farrow and Jess Layton
+
+## Brief
+
+To create a fully-deployed version of a full-stack OOP application, with utilisation of supporting tools, methodologies and technologies that encapsulate all core modules covered during training.
+
+## Solution
+
+Incorporated a CI/CD pipeline for the project, using Jenkins as a CI server, maven to build and run tests, nexus as a place to store our back-end dependencies and jar files, docker as a way to create images of our application to be stored and used to create containers, AWS EC2 instances to host the docker containers and AWS RDS as our storage for our app.
+
+## Authors
+
+Matthew Farrow
+
+Jess Layton
+
+## Links
+
+[Trello board](https://trello.com/b/cUgbPKCz/devops-project)
+
+[Front-end github repository](https://github.com/matt-dg-farrow/kayak-project-front-end)
+
+[Selenium Test Reports](https://github.com/matt-dg-farrow/Kayak-Project-Selenium-Tests)
