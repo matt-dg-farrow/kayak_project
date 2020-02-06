@@ -11,13 +11,13 @@ pipeline {
             }
             stage('--Build back-end--') {
                 steps {
-                    sh "docker build -t 9953136/app-matt ."
+                    sh "docker build -t 9953136/app-matt-master ."
                     }
             }
         stage('--Dockerise--') {
               steps {
                     withDockerRegistry([ credentialsId: "docker-login", url: "" ]) {
-                    sh "docker push 9953136/app-matt"
+                    sh "docker push 9953136/app-matt-master"
                     sh "docker image prune -f"
                     }
               }
