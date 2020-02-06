@@ -18,6 +18,7 @@ pipeline {
               steps {
                     withDockerRegistry([ credentialsId: "docker-login", url: "" ]) {
                     sh "docker push 9953136/app-matt"
+                    sh "docker image prune -f"
                     }
               }
          }
