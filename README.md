@@ -78,4 +78,4 @@ Jess Layton
 
 [Front-end github repository](https://github.com/matt-dg-farrow/kayak-project-front-end)
 
-[Selenium Test Reports](https://github.com/matt-dg-farrow/Kayak-Project-Selenium-Tests)
+[Selenium Test Repository](https://github.com/matt-dg-farrow/Kayak-Project-Selenium-Tests)
